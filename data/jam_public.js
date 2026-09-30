@@ -1343,42 +1343,6 @@ window.JAM = {
     }
    ],
    "vol": 10
-  },
-  {
-   "date": "2026-10-02",
-   "talks": [
-    {
-     "title": "9/26スタート NHK朝の連ドラ「ブラッサム」",
-     "body": [
-      "宇野千代 山口県岩国市出身の小説家、編集者、着物デザイナー。",
-      "昭和初期から戦後にかけては、新しい文学や芸術運動などが盛んで、文士たちの言葉にも影響力があり、作家の恋愛や私生活までもが世間の注目を集める時代。小説家であり、日本初の女性ファッション誌を創刊した編集者でもあり、着物デザインを手掛けるなど、幅広い分野で活躍した宇野千代は、そんな時代を象徴する存在です。",
-      "千代の代表作『おはん』は、妻と愛人の間で揺れ動く男の心情を描いた昭和文学の名作。自叙伝『生きて行く私』には、嫌なことはすぐに忘れ、感動したことに対しては即行動に移して、ひたむきに生きていく彼女の人生観がみずみずしく描かれ、ベストセラーに。私生活においては4度の結婚〜離婚を経験するなど、恋多き女性として、その自由奔放な生き方が時代を超えて、今も多くの人々を魅了し続けている。"
-     ],
-     "tags": [],
-     "links": [
-      {
-       "url": "https://www.web.nhk/tv/an/blossom/pl/series-tep-R769G71XJ6",
-       "title": "リンク先を見る",
-       "site": "web.nhk",
-       "desc": "",
-       "thumb": "",
-       "icon": "https://imgu.web.nhk/static/assets/images/tvseries/ts/R769G71XJ6/R769G71XJ6-eyecatch_05d47db41f73d44c15004d0dc3e7b15d.jpg"
-      },
-      {
-       "url": "https://yamaguchi-tourism.jp/feature/unochiyo",
-       "title": "リンク先を見る",
-       "site": "yamaguchi-tourism.jp",
-       "desc": "",
-       "thumb": "",
-       "icon": "https://yamaguchi-tourism.jp/lsc/upfile/article/0000/0311/311_1_l.jpg"
-      }
-     ],
-     "member": "M.O",
-     "images": [],
-     "card": null
-    }
-   ],
-   "vol": 11
   }
  ]
 };
