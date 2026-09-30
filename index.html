@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ja" class="locked">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>TREND JAM!</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=51a60bd5">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='9' cy='9' r='7' fill='%235B2C8F'/%3E%3Ccircle cx='23' cy='9' r='7' fill='%231E6BFF'/%3E%3Ccircle cx='9' cy='23' r='7' fill='%2310A56B'/%3E%3Ccircle cx='23' cy='23' r='7' fill='%23FF7A1A'/%3E%3C/svg%3E">
+</head>
+<body>
+<div id="gate" class="gate">
+  <form id="gate-form" class="gate-box" autocomplete="off">
+    <span class="dots gate-dots" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    <h1 class="gate-logo">TREND JAM<b>!</b></h1>
+    <p class="gate-lead">社内向けのサイトです。<br>パスワードを入力してください。</p>
+    <label class="gate-label" for="gate-pass">パスワード</label>
+    <input id="gate-pass" type="password" required>
+    <p id="gate-err" class="gate-err" hidden>パスワードが違います。もう一度入力してください。</p>
+    <button type="submit">ひらく →</button>
+    <p class="gate-foot">supported by 東光印刷株式会社</p>
+  </form>
+</div>
+<header class="top">
+  <div class="top-in">
+    <a class="logo" href="#/">
+      <span class="dots"><i></i><i></i><i></i><i></i></span>
+      TREND JAM<b>!</b>
+    </a>
+    <p class="tagline">ヒットの芽を4人の視点＋AIから集めました。金曜日更新！</p>
+    <form class="search" id="search" role="search">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+      <input id="q" type="search" placeholder="キーワード・人・タグで探す" autocomplete="off" aria-label="検索">
+    </form>
+    <a class="about-btn" href="#/about">私たちの活動</a>
+  </div>
+  <div class="ticker" aria-hidden="true"><div class="ticker-track" id="ticker"></div></div>
+</header>
+
+<main id="app"></main>
+
+<footer class="foot">
+  <p>毎週金曜、マーケッターの4人＋AIが持ち寄る「ヒットの芽」。<small>(※AIは第10回から)</small></p>
+  <p class="foot-members" id="foot-members"></p>
+  <p class="foot-note">リンク先の要点はAIがまとめたものです。くわしくは各リンク先をご覧ください。</p>
+  <p class="foot-link"><a href="#/copyright">TREND JAM! と著作権 →</a></p>
+  <p class="supported">supported by <a href="https://www.tokoinsatsu.co.jp/" target="_blank" rel="noopener">東光印刷株式会社</a></p>
+</footer>
+
+<script src="js/gate.js?v=0d1e7c95"></script>
+<script src="data/jam_public.js?v=642fe4e7"></script>
+<script src="js/app.js?v=131df963"></script>
+</body>
+</html>
