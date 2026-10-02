@@ -356,7 +356,7 @@ mark { background: #FFD23F; color: inherit; border-radius: 3px; padding: 0 2px; 
 }
 .about-btn:hover, .about-btn.on { background: transparent; color: #FFD23F; }
 
-/* ロゴの 4 色がクルクル回って、画面いっぱいに広がる */
+/* 顔のある●が集まって、ロゴマークの4つの点に収まる（動きは js/app.js の playHero） */
 .about-hero {
   position: relative; overflow: hidden; isolation: isolate;
   min-height: clamp(360px, 62vh, 560px);
@@ -364,40 +364,42 @@ mark { background: #FFD23F; color: inherit; border-radius: 3px; padding: 0 2px; 
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   border-bottom: var(--line) solid var(--ink);
 }
-.burst {
-  position: absolute; left: 50%; top: 50%; width: 0; height: 0; z-index: -1;
-  animation: spin 1.5s cubic-bezier(.6, 0, .3, 1) both;
+.troupe { position: absolute; inset: 0; pointer-events: none; }
+.about-hero { --s: 180px; }  /* ●の大きさ（playHero が画面に合わせて上書き） */
+.face {
+  position: absolute; left: 50%; top: 50%;
+  width: var(--s); height: var(--s); margin: calc(var(--s) / -2) 0 0 calc(var(--s) / -2);
+  border-radius: 50%; background: var(--c);
+  display: grid; place-items: center;
 }
-.burst i {
-  position: absolute; width: 56px; height: 56px; margin: -28px 0 0 -28px; border-radius: 50%;
-  background: var(--c);
-  transform: translate(calc(var(--x) * 34px), calc(var(--y) * 34px));
-  animation: spread 1.2s cubic-bezier(.2, .8, .2, 1) 1.35s both;
+.face b {
+  font: 800 calc(var(--s) * .3)/1 var(--latin); color: var(--ink);
+  letter-spacing: .35em; margin-right: -.35em; white-space: pre;
 }
-@keyframes spin {
-  from { transform: rotate(-90deg) scale(.4); }
-  60% { transform: rotate(540deg) scale(1.1); }
-  to { transform: rotate(720deg) scale(1); }
-}
-@keyframes spread {
-  to { transform: translate(calc(var(--x) * min(46vw, 560px)), calc(var(--y) * 34vh)) scale(7); }
-}
+.about-hero .face { visibility: hidden; }
+.about-hero.playing .face { visibility: visible; }
+.about-mark { display: grid; grid-template-columns: repeat(2, clamp(14px, 2.4vw, 26px)); gap: clamp(4px, .6vw, 7px); margin-bottom: clamp(14px, 2vw, 22px); }
+.about-mark i { aspect-ratio: 1; border-radius: 50%; background: var(--c); }
+.about-mark i:nth-child(1) { background: #9B6BD3; }  /* ロゴの紫（暗い背景で見えるよう明るめ） */
+.about-hero.playing .about-mark { visibility: hidden; }
+.about-hero.playing:not(.show) .about-logo,
+.about-hero.playing:not(.show) .about-sub { visibility: hidden; animation: none; }
 .about-logo {
   margin: 0; font: 400 clamp(26px, 10vw, 124px)/1 var(--display); letter-spacing: .02em; white-space: nowrap;
   text-shadow: 6px 6px 0 var(--ink);
   -webkit-text-stroke: 2px var(--ink);
-  animation: pop .6s cubic-bezier(.3, 1.6, .5, 1) 2.1s both;
+  animation: pop .6s cubic-bezier(.3, 1.6, .5, 1) both;
 }
 .about-logo b { color: #FFD23F; font-weight: 400; }
 .about-sub {
   margin: 22px 0 0; background: var(--ink); padding: 11px 20px; border-radius: 999px;
   font: 800 clamp(16px, 2.1vw, 19px)/1 var(--latin); letter-spacing: .12em;  /* 下のコピーと同じ大きさ */
   white-space: nowrap;
-  animation: pop .5s ease-out 2.4s both;
+  animation: pop .5s ease-out .2s both;
 }
 @keyframes pop { from { opacity: 0; transform: translateY(18px) scale(.85); } }
 @media (prefers-reduced-motion: reduce) {
-  .burst, .burst i, .about-logo, .about-sub { animation-duration: .01s; animation-delay: 0s; }
+  .about-logo, .about-sub { animation-duration: .01s; animation-delay: 0s; }
 }
 
 .about-copy {

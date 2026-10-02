@@ -195,8 +195,11 @@
   };
 
   function about() {
-    const dots = [[-1, -1, 0], [1, -1, 1], [-1, 1, 2], [1, 1, 3]]  // ロゴと同じ並び（紫・青・緑・オレンジ）
-      .map(([x, y, i]) => `<i style="--x:${x};--y:${y};--c:var(--c-${i})"></i>`).join("");
+    const SPOTS = [[-1, -1, 0], [1, -1, 1], [-1, 1, 2], [1, 1, 3]];  // ロゴと同じ並び（紫・青・緑・オレンジ）
+    // 顔のある●（4人）。最後はロゴマークの4つの点に収まる
+    const faces = SPOTS
+      .map(([x, y, i]) => `<i class="face" data-x="${x}" data-y="${y}" style="--c:${i ? `var(--c-${i})` : "#9B6BD3"}"><b>* *</b></i>`).join("");
+    const dots = SPOTS.map(([, , i]) => `<i style="--c:var(--c-${i})"></i>`).join("");
     const cards = order.map((m) => `
       <article class="member" style="--c:${color(m)}">
         <div class="member-photo"><span>${esc(m)}</span></div>
@@ -209,7 +212,8 @@
       </article>`).join("");
     return `
       <section class="about-hero" aria-label="TREND JAM!">
-        <div class="burst" aria-hidden="true">${dots}</div>
+        <div class="troupe" aria-hidden="true">${faces}</div>
+        <span class="about-mark" aria-hidden="true">${dots}</span>
         <h1 class="about-logo">TREND JAM<b>!</b></h1>
         <p class="about-sub">ABOUT US ／ 私たちの活動</p>
       </section>
@@ -222,6 +226,76 @@
       <h2 class="section-title">MEMBERS</h2>
       <section class="members">${cards}</section>
       <p class="about-back"><a class="btn" href="#/">最新号を見る →</a></p>`;
+  }
+
+  // 私たちの活動の冒頭：4人の●が四隅から集まる → 表情を変えてまばたき → 輪になってくるくる回る → 一度外へ広がる
+  // → それぞれ縮んでロゴマークの4つの点に収まり、ロゴが出る（●が4つ＝4人）
+  let heroTimer = null;
+  function playHero() {
+    clearInterval(heroTimer);
+    const hero = app.querySelector(".about-hero");
+    if (!hero) return;
+    const faces = [...hero.querySelectorAll(".face")];
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches || !hero.animate) {
+      hero.classList.add("done");
+      return;
+    }
+    hero.classList.add("playing");
+    const W = hero.clientWidth, H = hero.clientHeight;
+    const S = Math.round(Math.min(H * 0.36, W * 0.24, 220));  // ●の大きさ
+    hero.style.setProperty("--s", S + "px");
+
+    // 登場の動きは開始前から最初の形で待つ（both）。後半の動きは始まるまで前の動きを邪魔しない（forwards）
+    const opt = (ms, delay, easing, fill = "both") => ({ duration: ms, delay, easing, fill });
+    const spot = (el) => [+el.dataset.x, +el.dataset.y];
+    const home = (el) => { const [x, y] = spot(el); return `translate(${x * S * 0.54}px, ${y * S * 0.54}px)`; };
+    // 1. 4人の●：画面の外から大きいまま滑り込み、真ん中で寄り合う（少し弾む）
+    faces.forEach((el, i) => {
+      const [x, y] = spot(el);
+      el.animate([
+        { transform: `translate(${x * W * 0.7}px, ${y * H * 0.85}px) scale(1.8)` },
+        { transform: `${home(el)} scale(1)` },
+      ], opt(650, i * 90, "cubic-bezier(.3,1.4,.5,1)"));
+    });
+    // 2. 表情をパッパッと変える（●ごとに少しずらす）
+    const EYES = ["* *", "- -", "o o", "> <", "^ ^", "+ +", "o o", "- -"];
+    let tick = 0;
+    heroTimer = setInterval(() => {
+      tick++;
+      faces.forEach((f, i) => { f.firstChild.textContent = EYES[(tick + i * 2) % EYES.length]; });
+      if (tick >= 13) clearInterval(heroTimer);
+    }, 220);
+    // 3. 4人で輪になって、くるくる2回転（回りながら少し寄って小さくなる）
+    const SPIN = 1500, SPIN_MS = 1000;
+    const near = (el) => { const [x, y] = spot(el); return `translate(${x * S * 0.36}px, ${y * S * 0.36}px)`; };
+    faces.forEach((el) => el.animate([
+      { transform: `rotate(0deg) ${home(el)} scale(1)` },
+      { transform: `rotate(720deg) ${near(el)} scale(.78)` },
+    ], opt(SPIN_MS, SPIN, "cubic-bezier(.45,0,.35,1)", "forwards")));
+    // 4. 一度、外へパッと広がる
+    const BURST = SPIN + SPIN_MS, BURST_MS = 380;
+    const far = (el) => { const [x, y] = spot(el); return `translate(${x * W * 0.3}px, ${y * H * 0.3}px)`; };
+    faces.forEach((el) => el.animate([
+      { transform: `${near(el)} scale(.78)` },
+      { transform: `${far(el)} scale(.62)` },
+    ], opt(BURST_MS, BURST, "cubic-bezier(.2,.9,.3,1)", "forwards")));
+    // 5. 吸い込まれるように、ロゴマークの4つの点へまとまる
+    const mark = hero.querySelector(".about-mark");
+    const box = hero.getBoundingClientRect();
+    const cx = box.left + W / 2, cy = box.top + H / 2;
+    const T = BURST + BURST_MS + 90;
+    faces.forEach((f) => f.firstChild.animate([{ opacity: 1 }, { opacity: 0 }], opt(150, T, "linear", "forwards")));
+    const gather = [...mark.children].map((dot, i) => {
+      const r = dot.getBoundingClientRect();
+      return faces[i].animate([
+        { transform: `${far(faces[i])} scale(.62)` },
+        { transform: `translate(${r.left + r.width / 2 - cx}px, ${r.top + r.height / 2 - cy}px) scale(${r.width / S})` },
+      ], opt(560, T + i * 50, "cubic-bezier(.75,0,.25,1)", "forwards"));
+    });
+    // ロゴと下の帯を出し、点がそろったら本物のマークに入れ替える
+    // （タイマーではなくアニメーションの進み具合に合わせる。裏のタブで開いたときもずれないように）
+    hero.animate([], { duration: T + 480 }).finished.then(() => hero.classList.add("show"));
+    Promise.all(gather.map((a) => a.finished)).then(() => { hero.classList.remove("playing"); hero.classList.add("done", "show"); });
   }
 
   // ---------- TREND JAM! と著作権（#/copyright） ----------
@@ -302,6 +376,7 @@
       if (document.activeElement !== qInput) qInput.value = "";
     }
     app.innerHTML = html;
+    playHero();
     if (!(isSearch && wasSearch)) window.scrollTo(0, 0);
     wasSearch = isSearch;
   }

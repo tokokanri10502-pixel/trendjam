@@ -425,12 +425,12 @@ window.JAM = {
      ],
      "links": [
       {
-       "url": "https://www.takeharakankou.jp/event/24638/",
-       "title": "TAKEHARA KAKIGORI DIARY のイベント情報",
-       "site": "ひろしま竹原観光ナビ",
+       "url": "https://takehara-kakigori.com/",
+       "title": "竹原かき氷ダイアリー 公式サイト",
+       "site": "竹原かき氷ダイアリー",
        "desc": "",
        "thumb": "",
-       "icon": "https://www.takeharakankou.jp/wp/wp-content/themes/da-theme/assets/images/ogp.webp"
+       "icon": "https://cdn.peraichi.com/userData/61dfb098-13a2-4c96-840b-daced6976a9f/img/c50dad72-01de-4dcf-b49d-015df3d4ab27/26_0710LP1200x630.jpg"
       }
      ],
      "member": "K.M",
@@ -440,7 +440,7 @@ window.JAM = {
       "points": [
        "竹原の町並み保存地区が舞台",
        "10店舗がオリジナルかき氷",
-       "歩いてめぐる夏のイベント"
+       "7/25〜10/31の長期開催"
       ]
      }
     },
@@ -1343,6 +1343,143 @@ window.JAM = {
     }
    ],
    "vol": 10
+  },
+  {
+   "date": "2026-10-02",
+   "talks": [
+    {
+     "title": "「ダウンタイム」 Netflix 週トレンド1位の話題作",
+     "body": [],
+     "tags": [],
+     "links": [
+      {
+       "url": "https://www.netflix.com/jp/title/81603806",
+       "title": "リンク先を見る",
+       "site": "netflix.com",
+       "desc": "",
+       "thumb": "",
+       "icon": ""
+      }
+     ],
+     "member": "K.M",
+     "images": [],
+     "card": null
+    },
+    {
+     "title": "AIショートドラマの勃興 AI俳優が一般的に!?",
+     "body": [],
+     "tags": [],
+     "links": [
+      {
+       "url": "https://www.tiktok.com/tag/ai%E3%82%B7%E3%83%A7%E3%83%BC%E3%83%88%E3%83%89%E3%83%A9%E3%83%9E",
+       "title": "リンク先を見る",
+       "site": "tiktok.com",
+       "desc": "",
+       "thumb": "",
+       "icon": ""
+      },
+      {
+       "url": "https://www.yomiuri.co.jp/world/20260827-GYT1T00269/",
+       "title": "リンク先を見る",
+       "site": "yomiuri.co.jp",
+       "desc": "",
+       "thumb": "",
+       "icon": "https://www.yomiuri.co.jp/media/2026/08/20260827-GYT1I00270-1.jpg?type=ogp"
+      }
+     ],
+     "member": "E.S",
+     "images": [],
+     "card": null
+    },
+    {
+     "title": "ベルクでクエストが発生した 野菜の新しい買い方",
+     "body": [],
+     "tags": [],
+     "links": [
+      {
+       "url": "https://www.youtube.com/shorts/Uo92V8JoxZU",
+       "title": "リンク先を見る",
+       "site": "youtube.com",
+       "desc": "",
+       "thumb": "",
+       "icon": "https://i.ytimg.com/vi/Uo92V8JoxZU/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBgvA0XlK7XwzmMA_fNZ7BO1bReuA&usqp=CCk"
+      }
+     ],
+     "member": "I.M",
+     "images": [],
+     "card": null
+    },
+    {
+     "title": "9/28スタート NHK朝の連ドラ「ブラッサム」",
+     "body": [
+      "宇野千代 山口県岩国市出身。小説家・編集者・着物デザイナーとして活躍",
+      "日本初の女性ファッション誌を創刊。代表作は『おはん』、自伝『生きて行く私』はベストセラーに",
+      "結婚と離婚を4度経験。前向きで自由な生き方が、いまも多くの人をひきつける"
+     ],
+     "tags": [],
+     "links": [
+      {
+       "url": "https://www.web.nhk/tv/an/blossom/pl/series-tep-R769G71XJ6",
+       "title": "朝ドラ「ブラッサム」番組ページ",
+       "site": "NHK",
+       "desc": "",
+       "thumb": "",
+       "icon": "https://imgu.web.nhk/static/assets/images/tvseries/ts/R769G71XJ6/R769G71XJ6-eyecatch_05d47db41f73d44c15004d0dc3e7b15d.jpg"
+      },
+      {
+       "url": "https://yamaguchi-tourism.jp/feature/unochiyo",
+       "title": "宇野千代と岩国ゆかりの地の特集",
+       "site": "おいでませ山口へ",
+       "desc": "",
+       "thumb": "",
+       "icon": "https://yamaguchi-tourism.jp/lsc/upfile/article/0000/0311/311_1_l.jpg"
+      }
+     ],
+     "member": "M.O",
+     "images": [],
+     "card": {
+      "head": "岩国生まれの作家が朝ドラに",
+      "points": [
+       "宇野千代がモデルの主人公",
+       "9/28から月〜土の朝に放送",
+       "物語は山口・岩国から始まる"
+      ]
+     }
+    },
+    {
+     "title": "香り・質感・容器を自分で選んで、その場で作ってもらう「ハンドクリームお仕立て」が大阪初上陸。京都の行列体験があべのハルカスに（10/14〜10/27）",
+     "body": [
+      "なぜ今：既製品を選ぶより「自分だけの1本」を作る過程そのものが楽しまれ、贈り物にも自分用にも選ぶ理由になっている。",
+      "企画課への示唆：ラベルや外箱を選べる・名入れできる仕組みを店頭で用意すれば、量産品でも「お仕立て」の特別感を出せる。"
+     ],
+     "tags": [
+      "パーソナライズ",
+      "体験型",
+      "ポップアップ"
+     ],
+     "links": [
+      {
+       "url": "https://prtimes.jp/main/html/rd/p/000000623.000028974.html",
+       "title": "シェフドボーテ大阪ポップアップのお知らせ",
+       "site": "PR TIMES",
+       "desc": "",
+       "thumb": "",
+       "icon": "https://prcdn.freetls.fastly.net/release_image/28974/623/28974-623-eec85e2bb7c9bb016350fef2b84a301a-2000x1288.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260"
+      }
+     ],
+     "member": "AI",
+     "images": [],
+     "card": {
+      "head": "自分だけの1本を仕立てる",
+      "points": [
+       "香り・質感・容器を選べる",
+       "京都で人気の体験が大阪へ",
+       "10/14〜27 あべのハルカス"
+      ]
+     }
+    }
+   ],
+   "vol": 11
   }
  ]
 };
