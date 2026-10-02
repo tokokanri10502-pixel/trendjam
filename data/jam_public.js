@@ -1354,16 +1354,23 @@ window.JAM = {
      "links": [
       {
        "url": "https://www.netflix.com/jp/title/81603806",
-       "title": "リンク先を見る",
-       "site": "netflix.com",
+       "title": "『ダウンタイム』作品ページ",
+       "site": "Netflix",
        "desc": "",
        "thumb": "",
-       "icon": ""
+       "icon": "https://occ-0-6073-3188.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABRnK-D7oJulkpSFWo78Rc0UIaKsAuKmLc-HlFBxqB5WvipfIILbEYt-Lxv5o2aZSqiemULw7Uyhi7ACJjOBeFLn_2Eif3CtlEfJv.jpg?r=f8a"
       }
      ],
      "member": "K.M",
      "images": [],
-     "card": null
+     "card": {
+      "head": "美容医療の裏側を描くドラマ",
+      "points": [
+       "救急外科医が美容医療の世界へ",
+       "カリスマ美容外科医と対立",
+       "お金と美への欲望をえぐる"
+      ]
+     }
     },
     {
      "title": "AIショートドラマの勃興 AI俳優が一般的に!?",
@@ -1372,16 +1379,16 @@ window.JAM = {
      "links": [
       {
        "url": "https://www.tiktok.com/tag/ai%E3%82%B7%E3%83%A7%E3%83%BC%E3%83%88%E3%83%89%E3%83%A9%E3%83%9E",
-       "title": "リンク先を見る",
-       "site": "tiktok.com",
+       "title": "TikTok「#AIショートドラマ」の投稿一覧",
+       "site": "TikTok",
        "desc": "",
        "thumb": "",
        "icon": ""
       },
       {
        "url": "https://www.yomiuri.co.jp/world/20260827-GYT1T00269/",
-       "title": "リンク先を見る",
-       "site": "yomiuri.co.jp",
+       "title": "中国で全編AI制作のドラマが急増している記事",
+       "site": "読売新聞",
        "desc": "",
        "thumb": "",
        "icon": "https://www.yomiuri.co.jp/media/2026/08/20260827-GYT1I00270-1.jpg?type=ogp"
@@ -1389,7 +1396,14 @@ window.JAM = {
      ],
      "member": "E.S",
      "images": [],
-     "card": null
+     "card": {
+      "head": "AIが演じる短編ドラマが急増",
+      "points": [
+       "俳優も映像もAIで作る短編",
+       "中国では人気のAI女優も誕生",
+       "肖像権など新たな課題も"
+      ]
+     }
     },
     {
      "title": "ベルクでクエストが発生した 野菜の新しい買い方",
@@ -1398,8 +1412,8 @@ window.JAM = {
      "links": [
       {
        "url": "https://www.youtube.com/shorts/Uo92V8JoxZU",
-       "title": "リンク先を見る",
-       "site": "youtube.com",
+       "title": "ベルクのカット野菜の紹介動画",
+       "site": "YouTube",
        "desc": "",
        "thumb": "",
        "icon": "https://i.ytimg.com/vi/Uo92V8JoxZU/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLBgvA0XlK7XwzmMA_fNZ7BO1bReuA&usqp=CCk"
@@ -1407,7 +1421,14 @@ window.JAM = {
      ],
      "member": "I.M",
      "images": [],
-     "card": null
+     "card": {
+      "head": "野菜売り場がRPGの世界に",
+      "points": [
+       "スーパー「ベルク」の新しいカット野菜",
+       "ゲームの“クエスト”風に紹介",
+       "楽しく野菜を食べてもらう工夫"
+      ]
+     }
     },
     {
      "title": "9/28スタート NHK朝の連ドラ「ブラッサム」",
