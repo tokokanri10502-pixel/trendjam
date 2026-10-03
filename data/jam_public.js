@@ -1348,7 +1348,7 @@ window.JAM = {
    "date": "2026-10-02",
    "talks": [
     {
-     "title": "「ダウンタイム」 Netflix 週トレンド1位の話題作",
+     "title": "「ダウンタイム」 Netflix 週間トレンド1位の話題作",
      "body": [],
      "tags": [],
      "links": [
