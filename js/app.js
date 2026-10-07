@@ -317,10 +317,10 @@
     hero.appendChild(wipe);
     hero.querySelectorAll(".sc.on").forEach((el) => el.classList.remove("on"));  // 紫の下はもう要らない
     const at = (rad) => `circle(${rad}px at ${cx}px ${cy}px)`;
-    // 紫一色を一瞬（約0.07秒）見せてから、約0.62秒でしぼむ
+    // 紫一色を一瞬（約0.07秒）見せてから、約0.48秒でしぼむ
     await wipe.animate(
-      [{ clipPath: at(R) }, { clipPath: at(R), offset: 0.1, easing: "cubic-bezier(.65,0,.35,1)" }, { clipPath: at(r) }],
-      { duration: 690, fill: "forwards" }).finished.catch(() => {});
+      [{ clipPath: at(R) }, { clipPath: at(R), offset: 0.126, easing: "cubic-bezier(.65,0,.35,1)" }, { clipPath: at(r) }],
+      { duration: 550, fill: "forwards" }).finished.catch(() => {});
     wipe.remove();
   }
 
