@@ -286,7 +286,7 @@
     // 待ち時間はアニメーションの時計で数える（裏のタブで開いたときもずれない）
     const wait = (ms) => hero.animate([], { duration: ms }).finished;
     // 緩急：最初の「気づき」はたっぷり（緊張）、そこからは速いテンポで（緩和）
-    const DUR = [2800, 1600, 1100, 1350];  // 円・FIND・BRING・JAM（ms）
+    const DUR = [2800, 1450, 1100, 1350];  // 円・FIND・BRING・JAM（ms）
     const scenes = [...hero.querySelectorAll(".sc")];
     const no = hero.querySelector(".hud-no");
     (async () => {
@@ -344,7 +344,7 @@
     // 下げ幅を大きくすると跳ねの時間が縮んで横の速さが上がっていくので、控えめに下げる
     const H = [0, 0.72, 0.63, 0.55, 0.47].map((r) => r * fs);
     H[0] = land[0].y + oy + b * 1.5;  // 入り：場面の上の外から落ちてくる高さ
-    const T0 = 120, BUDGET = 1260;  // 場面は 1400ms。最初の待ちと、外へ抜けるまでをこの中に収める
+    const T0 = 120, BUDGET = 1260;  // 場面は 1450ms（playHero の DUR）。最初の待ちと、外へ抜けるまでをこの中に収める
     const exitX = box.width - ox + b, exitY = box.height - oy + b;  // ここを越えたら画面の外
 
     // 重力 g で道すじを作る（g が決まれば時間はすべて決まる）
