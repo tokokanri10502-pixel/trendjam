@@ -367,8 +367,8 @@ mark { background: #FFD23F; color: inherit; border-radius: 3px; padding: 0 2px; 
   border-bottom: var(--line) solid var(--ink);
 }
 .reel { position: absolute; inset: 0; z-index: 2; pointer-events: none; display: none; }
-.about-hero.playing .reel { display: block; }
-.about-hero.playing > :not(.reel):not(.reel-skip):not(.end-wipe) { visibility: hidden; }
+.about-hero[data-mode="reel"].playing .reel { display: block; }
+.about-hero.playing > :not(.reel):not(.reel-skip):not(.end-wipe):not(.troupe):not(.hero-switch):not(.slide-cover) { visibility: hidden; }
 .sc { position: absolute; inset: 0; display: none; place-items: center; overflow: hidden; }
 .sc.on { display: grid; }
 .sc-word {
@@ -397,6 +397,46 @@ mark { background: #FFD23F; color: inherit; border-radius: 3px; padding: 0 2px; 
 }
 .reel-skip:hover { opacity: 1; }
 .about-hero.playing .reel-skip { display: block; }
+
+/* 2本目の動画 FACES（以前の動画）：顔のある4人の●（動きは js の playFaces） */
+.about-hero { --s: 180px; }  /* ●の大きさ（playFaces が画面に合わせて上書き） */
+.troupe { position: absolute; inset: 0; pointer-events: none; z-index: 2; }
+.face {
+  position: absolute; left: 50%; top: 50%; visibility: hidden;
+  width: var(--s); height: var(--s); margin: calc(var(--s) / -2) 0 0 calc(var(--s) / -2);
+  border-radius: 50%; background: var(--c);
+  display: grid; place-items: center;
+}
+.face b {
+  font: 800 calc(var(--s) * .3)/1 var(--latin); color: var(--ink);
+  letter-spacing: .35em; margin-right: -.35em; white-space: pre;
+}
+.about-hero[data-mode="faces"].playing .face { visibility: visible; }
+/* ●が集まりきる少し前にロゴを出す（.show）。出方は REEL のロゴと同じ。再生中に隠す決まりより優先させるため !important */
+.about-hero[data-mode="faces"].playing.show .about-logo { visibility: visible !important; animation: pop .6s cubic-bezier(.3, 1.6, .5, 1) .3s both; }
+.about-hero[data-mode="faces"].playing.show .about-sub { visibility: visible !important; animation: pop .5s ease-out .5s both; }
+/* FACES は●がそのままロゴの点に収まるので、点の回転はしない */
+.about-hero[data-mode="faces"].done .about-mark,
+.about-hero[data-mode="faces"].done .about-mark i { animation: none; }
+
+/* 動画の切り替え（枠の右下）：‹ ● ○ › とスワイプ */
+.hero-switch {
+  position: absolute; z-index: 6; right: clamp(12px, 2.6vw, 28px); bottom: clamp(8px, 1.8vw, 18px);  /* 右下（左下は添え書き） */
+  display: flex; align-items: center; gap: 8px; color: #fff;
+  background: rgba(23,19,31,.55); border-radius: 999px; padding: 4px 6px;
+}
+.about-hero[data-tone="light"].playing .hero-switch { color: var(--ink); background: rgba(255,255,255,.6); }
+.hs-arrow {
+  width: 26px; height: 26px; border-radius: 50%; border: 0; background: transparent; color: inherit; cursor: pointer;
+  font: 900 18px/1 var(--latin); display: grid; place-items: center; opacity: .8;
+}
+.hs-arrow:hover { opacity: 1; background: rgba(255,255,255,.15); }
+.hs-dot { width: 9px; height: 9px; border-radius: 999px; border: 0; padding: 0; cursor: pointer; background: currentColor; opacity: .4; transition: width .2s, opacity .2s; }
+.hs-dot.on { width: 22px; opacity: 1; background: #FFD23F; }
+.hs-name { font: 800 10.5px/1 var(--latin); letter-spacing: .12em; opacity: .8; min-width: 6.5em; text-align: center; }
+@media (max-width: 480px) { .hs-name { display: none; } }  /* 狭い画面では添え書きと重ならないよう名前を省く */
+/* スライドで切り替えるときに横に流れる幕 */
+.slide-cover { position: absolute; inset: 0; z-index: 7; background: var(--ink); pointer-events: none; }
 .about-hero[data-tone="light"] .reel-skip { color: var(--ink); }
 
 /* 1. 点がひとつ：黒地に点がゆっくり現れ、輪がゆっくり広がる → 最後に画面いっぱいへ一気に膨らんで次の紫へ */

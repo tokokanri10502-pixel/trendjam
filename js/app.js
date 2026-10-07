@@ -196,6 +196,9 @@
 
   function about() {
     const dots = [0, 1, 2, 3].map((i) => `<i style="--c:var(--c-${i})"></i>`).join("");  // ロゴと同じ並び（紫・青・緑・オレンジ）
+    // 以前の動画（FACES）の顔のある●（4人）。最後はロゴマークの4つの点に収まる
+    const faces = [[-1, -1, 0], [1, -1, 1], [-1, 1, 2], [1, 1, 3]]
+      .map(([x, y, i]) => `<i class="face" data-x="${x}" data-y="${y}" style="--c:${i ? `var(--c-${i})` : "#9B6BD3"}"><b>* *</b></i>`).join("");
     const cards = order.map((m) => `
       <article class="member" style="--c:${color(m)}">
         <div class="member-photo"><span>${esc(m)}</span></div>
@@ -209,10 +212,17 @@
     return `
       <section class="about-hero" aria-label="TREND JAM!">
         ${reel()}
+        <div class="troupe" aria-hidden="true">${faces}</div>
         <span class="about-mark" aria-hidden="true">${dots}</span>
         <h1 class="about-logo">TREND JAM<svg class="bang" viewBox="0 0 309 830" role="img" aria-label="!"><path d="M30 0H275L242 547H65Z"/><circle cx="152.5" cy="705" r="100"/></svg></h1>
         <p class="about-sub">ABOUT US ／ 私たちの活動</p>
         <p class="sc-cap end-cap">トレンドジャム！</p>
+        <div class="hero-switch" role="group" aria-label="オープニング動画を選ぶ">
+          <button class="hs-arrow" type="button" data-step="-1" aria-label="前の動画">‹</button>
+          ${HERO_MODES.map((m, i) => `<button class="hs-dot" type="button" data-mode="${m.key}" aria-label="動画${i + 1}：${m.name}"></button>`).join("")}
+          <span class="hs-name"></span>
+          <button class="hs-arrow" type="button" data-step="1" aria-label="次の動画">›</button>
+        </div>
       </section>
       <section class="about-copy">
         <p>情報があふれ、流行の寿命がどんどん短くなるいま、「売れたもの」を追いかけるだけでなく「これから来る兆し」をつかまえたい。</p>
@@ -267,41 +277,164 @@
       <button class="reel-skip" type="button">スキップ ›</button>`;
   }
 
-  let reelRun = 0;
-  function playHero() {
+  // 冒頭の動画は2本。枠の下の「‹ ● ○ ›」かスワイプで選ぶ（最初は REEL）
+  const HERO_MODES = [{ key: "reel", name: "REEL" }, { key: "faces", name: "FACES" }];
+  let heroMode = "reel", reelRun = 0, heroTimer = null;
+
+  function playHero(mode = heroMode) {
+    heroMode = mode;
     const run = ++reelRun;
+    clearInterval(heroTimer);
     const hero = app.querySelector(".about-hero");
     if (!hero) return;
+    // 前の動画の動きを止めて、最初の状態に戻す（CSS のアニメーションは残す）
+    hero.getAnimations({ subtree: true }).forEach((a) => { if (!(a instanceof CSSAnimation)) a.cancel(); });
+    hero.querySelectorAll(".sc.on, .end-wipe").forEach((el) => el.classList.contains("end-wipe") ? el.remove() : el.classList.remove("on"));
+    hero.classList.remove("done", "show", "playing");
+    hero.dataset.mode = mode;
+    void hero.offsetWidth;  // クラスを付け直したときに CSS のアニメーションが最初から動くように
+    setupSwitch(hero);
     const finish = () => {
       if (run !== reelRun) return;
+      clearInterval(heroTimer);
+      hero.getAnimations({ subtree: true }).forEach((a) => { if (!(a instanceof CSSAnimation)) a.cancel(); });
       hero.classList.remove("playing");
-      hero.classList.add("done");
+      hero.classList.add("done", "show");
       hero.querySelectorAll(".sc.on, .end-wipe").forEach((el) => el.classList.contains("end-wipe") ? el.remove() : el.classList.remove("on"));
     };
-    hero.classList.remove("done");
     if (matchMedia("(prefers-reduced-motion: reduce)").matches || !hero.animate) { finish(); return; }
     hero.classList.add("playing");
     let skipped = false;
+    const alive = () => run === reelRun && !skipped;  // 別の動画に切り替えた・スキップしたら、続きは動かさない
     hero.querySelector(".reel-skip").onclick = () => { skipped = true; finish(); };
+    if (mode === "faces") playFaces(hero, alive, finish);
+    else playReel(hero, alive, finish);
+  }
+
+  // 切り替えボタンとスワイプ。黒い幕が横に流れて、スライドのように次の動画へ
+  function setupSwitch(hero) {
+    const sw = hero.querySelector(".hero-switch");
+    const idx = HERO_MODES.findIndex((m) => m.key === heroMode);
+    sw.querySelectorAll(".hs-dot").forEach((d) => d.classList.toggle("on", d.dataset.mode === heroMode));
+    sw.querySelector(".hs-name").textContent = `${idx + 1}/${HERO_MODES.length} ${HERO_MODES[idx].name}`;
+    const go = (to, dir) => slideTo(hero, to, dir);
+    sw.onclick = (e) => {
+      const btn = e.target.closest("button");
+      if (!btn) return;
+      if (btn.dataset.mode) { const to = HERO_MODES.findIndex((m) => m.key === btn.dataset.mode); go(to, to >= idx ? 1 : -1); }
+      else go((idx + +btn.dataset.step + HERO_MODES.length) % HERO_MODES.length, +btn.dataset.step);
+    };
+    let x0 = null;
+    hero.onpointerdown = (e) => { if (e.pointerType !== "mouse") x0 = e.clientX; };
+    hero.onpointerup = (e) => {
+      if (x0 === null) return;
+      const dx = e.clientX - x0; x0 = null;
+      if (Math.abs(dx) > 50) go((idx + (dx < 0 ? 1 : -1) + HERO_MODES.length) % HERO_MODES.length, dx < 0 ? 1 : -1);
+    };
+  }
+
+  let sliding = false;
+  async function slideTo(hero, to, dir) {
+    if (sliding) return;
+    sliding = true;
+    const cover = document.createElement("div");
+    cover.className = "slide-cover";
+    hero.appendChild(cover);
+    const from = dir > 0 ? "100%" : "-100%", out = dir > 0 ? "-100%" : "100%";
+    await cover.animate([{ transform: `translateX(${from})` }, { transform: "translateX(0)" }],
+      { duration: 220, easing: "cubic-bezier(.6,0,.4,1)", fill: "forwards" }).finished.catch(() => {});
+    playHero(HERO_MODES[to].key);
+    hero.appendChild(cover);  // playHero が幕より下に描いたものの上に残す
+    await cover.animate([{ transform: "translateX(0)" }, { transform: `translateX(${out})` }],
+      { duration: 260, easing: "cubic-bezier(.6,0,.4,1)", fill: "forwards" }).finished.catch(() => {});
+    cover.remove();
+    sliding = false;
+  }
+
+  // 1本目 REEL：場面ごとに背景色ごと切り替わるリール → 紫の幕がしぼんでロゴの点 → 4つの点が回ってロゴ
+  function playReel(hero, alive, finish) {
     // 待ち時間はアニメーションの時計で数える（裏のタブで開いたときもずれない）
-    const wait = (ms) => hero.animate([], { duration: ms }).finished;
+    const wait = (ms) => hero.animate([], { duration: ms }).finished.catch(() => {});
     // 緩急：最初の「気づき」はたっぷり（緊張）、そこからは速いテンポで（緩和）
     const DUR = [2800, 1450, 1100, 1350];  // 円・FIND・BRING・JAM（ms）
     const scenes = [...hero.querySelectorAll(".sc")];
     const no = hero.querySelector(".hud-no");
     (async () => {
       for (let i = 0; i < scenes.length; i++) {
-        if (skipped || run !== reelRun) return;
+        if (!alive()) return;
         scenes.forEach((el) => el.classList.toggle("on", el === scenes[i]));
         hero.dataset.tone = scenes[i].classList.contains("sc-jam") ? "light" : "dark";
         no.textContent = String(i + 1).padStart(2, "0");
         if (SCENES[i].key === "find") bounceBall(scenes[i]);
         await wait(DUR[i]);
       }
-      if (skipped || run !== reelRun) return;
+      if (!alive()) return;
       await wipeToMark(hero);
-      if (!skipped) finish();
+      if (alive()) finish();
     })();
+  }
+
+  // 2本目 FACES（以前の動画）：4人の●が四隅から集まる → 表情を変えてまばたき → 輪になってくるくる回る
+  // → 一度外へ広がる → それぞれ縮んでロゴマークの4つの点に収まり、ロゴが出る（●が4つ＝4人）
+  function playFaces(hero, alive, finish) {
+    const faces = [...hero.querySelectorAll(".face")];
+    hero.dataset.tone = "dark";
+    faces.forEach((f) => { f.firstChild.textContent = "* *"; });
+    const W = hero.clientWidth, H = hero.clientHeight;
+    const S = Math.round(Math.min(H * 0.36, W * 0.24, 220));  // ●の大きさ
+    hero.style.setProperty("--s", S + "px");
+    // 登場の動きは開始前から最初の形で待つ（both）。後半の動きは始まるまで前の動きを邪魔しない（forwards）
+    const opt = (ms, delay, easing, fill = "both") => ({ duration: ms, delay, easing, fill });
+    const spot = (el) => [+el.dataset.x, +el.dataset.y];
+    const home = (el) => { const [x, y] = spot(el); return `translate(${x * S * 0.54}px, ${y * S * 0.54}px)`; };
+    // 1. 4人の●：画面の外から大きいまま滑り込み、真ん中で寄り合う（少し弾む）
+    faces.forEach((el, i) => {
+      const [x, y] = spot(el);
+      el.animate([
+        { transform: `translate(${x * W * 0.7}px, ${y * H * 0.85}px) scale(1.8)` },
+        { transform: `${home(el)} scale(1)` },
+      ], opt(650, i * 90, "cubic-bezier(.3,1.4,.5,1)"));
+    });
+    // 2. 表情をパッパッと変える（●ごとに少しずらす）
+    const EYES = ["* *", "- -", "o o", "> <", "^ ^", "+ +", "o o", "- -"];
+    let tick = 0;
+    heroTimer = setInterval(() => {
+      if (!alive()) { clearInterval(heroTimer); return; }
+      tick++;
+      faces.forEach((f, i) => { f.firstChild.textContent = EYES[(tick + i * 2) % EYES.length]; });
+      if (tick >= 13) clearInterval(heroTimer);
+    }, 220);
+    // 3. 4人で輪になって、くるくる2回転（回りながら少し寄って小さくなる）
+    const SPIN = 1500, SPIN_MS = 1000;
+    const near = (el) => { const [x, y] = spot(el); return `translate(${x * S * 0.36}px, ${y * S * 0.36}px)`; };
+    faces.forEach((el) => el.animate([
+      { transform: `rotate(0deg) ${home(el)} scale(1)` },
+      { transform: `rotate(720deg) ${near(el)} scale(.78)` },
+    ], opt(SPIN_MS, SPIN, "cubic-bezier(.45,0,.35,1)", "forwards")));
+    // 4. 一度、外へパッと広がる
+    const BURST = SPIN + SPIN_MS, BURST_MS = 380;
+    const far = (el) => { const [x, y] = spot(el); return `translate(${x * W * 0.3}px, ${y * H * 0.3}px)`; };
+    faces.forEach((el) => el.animate([
+      { transform: `${near(el)} scale(.78)` },
+      { transform: `${far(el)} scale(.62)` },
+    ], opt(BURST_MS, BURST, "cubic-bezier(.2,.9,.3,1)", "forwards")));
+    // 5. 吸い込まれるように、ロゴマークの4つの点へまとまる
+    const mark = hero.querySelector(".about-mark");
+    const box = hero.getBoundingClientRect();
+    const cx = box.left + W / 2, cy = box.top + H / 2;
+    const T = BURST + BURST_MS + 90;
+    faces.forEach((f) => f.firstChild.animate([{ opacity: 1 }, { opacity: 0 }], opt(150, T, "linear", "forwards")));
+    const gather = [...mark.children].map((dot, i) => {
+      const r = dot.getBoundingClientRect();
+      return faces[i].animate([
+        { transform: `${far(faces[i])} scale(.62)` },
+        { transform: `translate(${r.left + r.width / 2 - cx}px, ${r.top + r.height / 2 - cy}px) scale(${r.width / S})` },
+      ], opt(560, T + i * 50, "cubic-bezier(.75,0,.25,1)", "forwards"));
+    });
+    // ロゴと下の帯を出し、点がそろったら本物のマークに入れ替える
+    // （タイマーではなくアニメーションの進み具合に合わせる。裏のタブで開いたときもずれないように）
+    hero.animate([], { duration: T + 480 }).finished.then(() => { if (alive()) hero.classList.add("show"); }).catch(() => {});
+    Promise.all(gather.map((a) => a.finished)).then(() => { if (alive()) finish(); }).catch(() => {});
   }
 
   // リールの最後 → ロゴ：一瞬で画面が紫になり、紫が円の形でしぼんで左上の紫の●にぴったり重なる。
