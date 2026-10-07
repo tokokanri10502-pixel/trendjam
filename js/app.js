@@ -286,7 +286,7 @@
     // 待ち時間はアニメーションの時計で数える（裏のタブで開いたときもずれない）
     const wait = (ms) => hero.animate([], { duration: ms }).finished;
     // 緩急：最初の「気づき」はたっぷり（緊張）、そこからは速いテンポで（緩和）
-    const DUR = [2800, 1600, 1100, 1500];  // 円・FIND・BRING・JAM（ms）
+    const DUR = [2800, 1600, 1100, 1350];  // 円・FIND・BRING・JAM（ms）
     const scenes = [...hero.querySelectorAll(".sc")];
     const no = hero.querySelector(".hud-no");
     (async () => {
