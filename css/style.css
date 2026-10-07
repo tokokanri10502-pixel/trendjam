@@ -48,7 +48,9 @@ img { display: block; max-width: 100%; }
   text-decoration: none; white-space: nowrap;
   display: flex; align-items: center; gap: 10px;
 }
-.logo b { color: #FFD23F; font-weight: 400; }
+/* ロゴの「！」：書体の「！」は下の点が四角なので、同じ形の棒＋丸い●を図形で描く（リールの黄色い●とつながるように）
+   書体の「！」を測った寸法（文字の大きさ＝1000）：幅309、棒は上幅 30〜275・下幅 65〜242、点は直径200の円。ベースライン＝y780 */
+.bang { display: inline-block; width: .309em; height: .83em; vertical-align: -.05em; fill: #FFD23F; overflow: visible; }
 .dots { display: grid; grid-template-columns: 9px 9px; gap: 3px; }
 .dots i { width: 9px; height: 9px; border-radius: 50%; }
 .dots i:nth-child(1) { background: #9B6BD3; }
@@ -366,7 +368,7 @@ mark { background: #FFD23F; color: inherit; border-radius: 3px; padding: 0 2px; 
 }
 .reel { position: absolute; inset: 0; z-index: 2; pointer-events: none; display: none; }
 .about-hero.playing .reel { display: block; }
-.about-hero.playing > :not(.reel):not(.reel-skip) { visibility: hidden; }
+.about-hero.playing > :not(.reel):not(.reel-skip):not(.end-wipe) { visibility: hidden; }
 .sc { position: absolute; inset: 0; display: none; place-items: center; overflow: hidden; }
 .sc.on { display: grid; }
 .sc-word {
@@ -376,7 +378,7 @@ mark { background: #FFD23F; color: inherit; border-radius: 3px; padding: 0 2px; 
 .sc-word span { display: inline-block; }
 .sc-cap {
   position: absolute; left: clamp(16px, 3vw, 32px); bottom: clamp(14px, 2.4vw, 26px); margin: 0;
-  font: 700 clamp(13px, 1.5vw, 16px)/1 var(--body); letter-spacing: .06em; opacity: 0;
+  font: 700 clamp(15px, 1.8vw, 20px)/1 var(--body); letter-spacing: .06em; opacity: 0;
   animation: cap-in .4s ease-out .15s forwards;
 }
 .sc-dot .sc-cap { animation: cap-in .9s ease-out .4s forwards; }  /* 最初の場面はゆっくり */
@@ -400,14 +402,15 @@ mark { background: #FFD23F; color: inherit; border-radius: 3px; padding: 0 2px; 
 /* 1. 点がひとつ：黒地に点がゆっくり現れ、輪がゆっくり広がる → 最後に画面いっぱいへ一気に膨らんで次の紫へ */
 .sc-dot { background: var(--ink); }
 .dot-core {
-  grid-area: 1 / 1; z-index: 1; width: 16px; height: 16px; border-radius: 50%; background: #fff;
-  animation: dot-in .8s cubic-bezier(.2,.9,.3,1.2) .15s both, dot-burst .3s cubic-bezier(.7,0,.9,.5) 1.5s forwards;
+  grid-area: 1 / 1; z-index: 1; width: clamp(18px, 2.4vw, 30px); aspect-ratio: 1; border-radius: 50%; background: #FFD23F;  /* FIND の玉（.find-ball）の約8割。黒地では同じ大きさだと大きく見えるため */  /* FIND で跳ねる玉と同じ黄色 */
+  animation: dot-in .8s cubic-bezier(.2,.9,.3,1.2) .15s both, dot-burst .3s cubic-bezier(.7,0,.9,.5) 2.5s forwards;  /* 場面は 2.8 秒（js の DUR） */
 }
 @keyframes dot-burst { 30% { background: #9B6BD3; } to { transform: scale(160); background: #9B6BD3; } }
-.dot-ring { grid-area: 1 / 1; width: 16px; height: 16px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,.55); animation: ring 1.5s cubic-bezier(.25,.6,.3,1) .35s both; }
-.dot-ring.r2 { animation-delay: .85s; }
+.dot-ring { grid-area: 1 / 1; width: 16px; height: 16px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,.55); animation: ring 2s cubic-bezier(.25,.6,.3,1) .35s both; }
+.dot-ring.r2 { animation-name: ring2; animation-delay: 1s; }  /* ゆっくり広げる。輪が消えてから膨らむまでが余白 */
 @keyframes dot-in { from { transform: scale(0); } }
-@keyframes ring { from { transform: scale(1); opacity: 1; } to { transform: scale(14); opacity: 0; } }
+@keyframes ring { from { transform: scale(1); opacity: 1; } to { transform: scale(18); opacity: 0; } }  /* 最後は直径 約288px */
+@keyframes ring2 { from { transform: scale(1); opacity: 1; } to { transform: scale(24); opacity: 0; } }  /* 2つ目の輪はひと回り大きく 約384px */
 
 /* 2. FIND：紫地。文字が上から落ちて弾み、黄色い玉が跳ねる */
 .sc-find { background: #9B6BD3; color: var(--ink); }
@@ -429,8 +432,13 @@ mark { background: #FFD23F; color: inherit; border-radius: 3px; padding: 0 2px; 
 .rise { overflow: hidden; padding-bottom: .06em; }
 .rise span { animation: rise .5s cubic-bezier(.2,.9,.2,1) both; animation-delay: calc(var(--i) * 55ms + 40ms); }
 @keyframes rise { from { transform: translateY(110%); } }
-.bring-axis { position: absolute; left: 8%; right: 8%; bottom: 22%; height: 2px; background: rgba(255,255,255,.5); transform-origin: left; animation: axis .6s cubic-bezier(.6,0,.2,1) both; }
-@keyframes axis { from { transform: scaleX(0); } }
+/* 罫線は長さそのものを伸ばし（左から右へ）、伸びていく先頭に黄色い●を付ける */
+.bring-axis { position: absolute; left: 8%; width: 84%; bottom: 22%; height: 2px; background: #FFD23F; animation: axis .6s cubic-bezier(.6,0,.2,1) both; }
+.bring-axis::after {
+  content: ""; position: absolute; right: 0; top: 50%; width: clamp(14px, 1.9vw, 24px); aspect-ratio: 1;  /* 最初の●の約8割 */
+  border-radius: 50%; background: #FFD23F; transform: translate(50%, -50%);
+}
+@keyframes axis { from { width: 0; } }
 
 /* 4. JAM：クリーム地。4人の色の図形タイルがリズムよく埋まる */
 .sc-jam { background: #F4EFE6; color: var(--ink); }
@@ -441,6 +449,7 @@ mark { background: #FFD23F; color: inherit; border-radius: 3px; padding: 0 2px; 
 .jam-grid > i { --c: var(--ink); position: relative; overflow: hidden; animation: tile .32s cubic-bezier(.3,1.5,.5,1) both; animation-delay: var(--d); }
 @keyframes tile { from { transform: scale(0); } }
 .t-circle { background: radial-gradient(circle, var(--c) 0 62%, transparent 63%); }
+.t-ball { background: radial-gradient(circle, var(--c) 0 53%, var(--ink) 54% 62%, transparent 63%); }  /* 黄色い●（FIND の玉と同じく黒い縁取り） */
 .t-ring { background: radial-gradient(circle, transparent 0 30%, var(--c) 31% 62%, transparent 63%); }
 .t-quarter { background: radial-gradient(circle at 0 100%, var(--c) 0 99%, transparent 100%); }
 .t-stripes { background: repeating-linear-gradient(90deg, var(--c) 0 16%, transparent 16% 32%); }
@@ -458,10 +467,14 @@ mark { background: #FFD23F; color: inherit; border-radius: 3px; padding: 0 2px; 
 .about-mark { display: grid; grid-template-columns: repeat(2, clamp(14px, 2.4vw, 26px)); gap: clamp(4px, .6vw, 7px); margin-bottom: clamp(14px, 2vw, 22px); }
 .about-mark i { aspect-ratio: 1; border-radius: 50%; background: var(--c); }
 .about-mark i:nth-child(1) { background: #9B6BD3; }  /* ロゴの紫（暗い背景で見えるよう明るめ） */
-/* 4つの点がポンと出ながら、まとまってくるくる2回転して止まる（2回転なので最後は元の並び） */
-.about-hero.done .about-mark { animation: mark-spin 1.1s cubic-bezier(.2,.7,.25,1) both; }
-@keyframes mark-spin { from { transform: rotate(-720deg) scale(.4); } }
+/* リールの最後の紫の幕（js の wipeToMark）：画面いっぱいの紫が、左上の紫の点までしぼむ */
+.end-wipe { position: absolute; inset: 0; z-index: 5; background: #9B6BD3; pointer-events: none; }
+/* 紫がしぼんでできた左上の点から始まり、残り3つの点がポンと出ながら、まとまってくるくる2回転して止まる。
+   回転の始まりは最終の並び・大きさと同じ（-720deg）なので、しぼんだ紫の点と位置がぴったり合う */
+.about-hero.done .about-mark { animation: mark-spin 1.2s cubic-bezier(.5,0,.2,1) both; }
+@keyframes mark-spin { from { transform: rotate(-720deg); } }
 .about-hero.done .about-mark i { animation: dot-in .4s cubic-bezier(.3,1.7,.5,1) both; }
+.about-hero.done .about-mark i:nth-child(1) { animation: none; }  /* 紫の点は幕からそのまま残る */
 .about-hero.done .about-mark i:nth-child(2) { animation-delay: .08s; }
 .about-hero.done .about-mark i:nth-child(3) { animation-delay: .16s; }
 .about-hero.done .about-mark i:nth-child(4) { animation-delay: .24s; }
@@ -476,7 +489,7 @@ mark { background: #FFD23F; color: inherit; border-radius: 3px; padding: 0 2px; 
   -webkit-text-stroke: 2px var(--ink);
   animation: pop .6s cubic-bezier(.3, 1.6, .5, 1) .3s both;
 }
-.about-logo b { color: #FFD23F; font-weight: 400; }
+.about-logo .bang { stroke: var(--ink); stroke-width: 2px; paint-order: stroke; vector-effect: non-scaling-stroke; filter: drop-shadow(6px 6px 0 var(--ink)); }  /* 文字と同じ縁取り・影 */
 .about-sub {
   margin: 22px 0 0; background: var(--ink); padding: 11px 20px; border-radius: 999px;
   font: 800 clamp(16px, 2.1vw, 19px)/1 var(--latin); letter-spacing: .12em;  /* 下のコピーと同じ大きさ */
@@ -630,7 +643,7 @@ html.locked body > :not(#gate) { display: none !important; }
 .gate-dots { grid-template-columns: 14px 14px; gap: 4px; }
 .gate-dots i { width: 14px; height: 14px; }
 .gate-logo { margin: 0; font: 400 34px/1.1 var(--display); letter-spacing: .02em; }
-.gate-logo b { color: #FFD23F; font-weight: 400; -webkit-text-stroke: 1.5px var(--ink); }
+.gate-logo .bang { stroke: var(--ink); stroke-width: 1.5px; paint-order: stroke; }
 .gate-lead { margin: 0 0 6px; color: var(--sub); font-weight: 700; font-size: 14px; line-height: 1.7; }
 .gate-label { justify-self: start; font: 900 12px/1 var(--body); letter-spacing: .08em; color: var(--sub); }
 .gate-box input {

@@ -210,7 +210,7 @@
       <section class="about-hero" aria-label="TREND JAM!">
         ${reel()}
         <span class="about-mark" aria-hidden="true">${dots}</span>
-        <h1 class="about-logo">TREND JAM<b>!</b></h1>
+        <h1 class="about-logo">TREND JAM<svg class="bang" viewBox="0 0 309 830" role="img" aria-label="!"><path d="M30 0H275L242 547H65Z"/><circle cx="152.5" cy="705" r="100"/></svg></h1>
         <p class="about-sub">ABOUT US ／ 私たちの活動</p>
         <p class="sc-cap end-cap">トレンドジャム！</p>
       </section>
@@ -237,11 +237,11 @@
   function reel() {
     // JAM の場面のタイル：8×3 マスを全部埋めて長方形に（四隅は角の立つ四角）。4人の色＋黒
     // 「-」は真ん中の帯（JAM）が乗るマス。左上から斜めの波のように順に出る
-    const C = { P: "var(--c-0)", B: "var(--c-1)", G: "var(--c-2)", O: "var(--c-3)", K: "var(--ink)" };
+    const C = { P: "var(--c-0)", B: "var(--c-1)", G: "var(--c-2)", O: "var(--c-3)", K: "var(--ink)", Y: "#FFD23F" };
     const LAYOUT = [
       ["square P", "circle O", "stripes B", "quarter G", "ring K", "half O", "bars B", "square G"],
-      ["half B", "ring G", "-", "-", "-", "-", "circle P", "stripes O"],
-      ["square O", "bars P", "dot K", "circle G", "quarter B", "stripes P", "ring O", "square P"],
+      ["half B", "ring G", "-", "-", "-", "-", "ring O", "stripes O"],
+      ["square O", "bars P", "dot K", "circle G", "quarter B", "stripes P", "ball Y", "square P"],  // ball＝リールを通して出てくる黄色い●
     ];
     const tiles = LAYOUT.flatMap((row, r) => row.map((cell, c) => {
       if (cell === "-") return `<b class="t-gap"></b>`;
@@ -276,31 +276,52 @@
       if (run !== reelRun) return;
       hero.classList.remove("playing");
       hero.classList.add("done");
-      hero.querySelectorAll(".sc.on").forEach((el) => el.classList.remove("on"));
+      hero.querySelectorAll(".sc.on, .end-wipe").forEach((el) => el.classList.contains("end-wipe") ? el.remove() : el.classList.remove("on"));
     };
+    hero.classList.remove("done");
     if (matchMedia("(prefers-reduced-motion: reduce)").matches || !hero.animate) { finish(); return; }
     hero.classList.add("playing");
     let skipped = false;
-    hero.querySelector(".reel-skip").addEventListener("click", () => { skipped = true; finish(); });
+    hero.querySelector(".reel-skip").onclick = () => { skipped = true; finish(); };
     // 待ち時間はアニメーションの時計で数える（裏のタブで開いたときもずれない）
     const wait = (ms) => hero.animate([], { duration: ms }).finished;
-    // 緩急：最初の「気づき」はゆっくり、そこからは速いテンポで
-    const DUR = [1800, 1400, 800, 1150];
+    // 緩急：最初の「気づき」はたっぷり（緊張）、そこからは速いテンポで（緩和）
+    const DUR = [2800, 1600, 1100, 1500];  // 円・FIND・BRING・JAM（ms）
     const scenes = [...hero.querySelectorAll(".sc")];
     const no = hero.querySelector(".hud-no");
     (async () => {
-      let t = 0;
       for (let i = 0; i < scenes.length; i++) {
         if (skipped || run !== reelRun) return;
         scenes.forEach((el) => el.classList.toggle("on", el === scenes[i]));
         hero.dataset.tone = scenes[i].classList.contains("sc-jam") ? "light" : "dark";
         no.textContent = String(i + 1).padStart(2, "0");
-        if (scenes[i].classList.contains("sc-find")) bounceBall(scenes[i]);
+        if (SCENES[i].key === "find") bounceBall(scenes[i]);
         await wait(DUR[i]);
-        t += DUR[i];
       }
+      if (skipped || run !== reelRun) return;
+      await wipeToMark(hero);
       if (!skipped) finish();
     })();
+  }
+
+  // リールの最後 → ロゴ：一瞬で画面が紫になり、紫が円の形でしぼんで左上の紫の●にぴったり重なる。
+  // そこで紫の幕を外すと、同じ場所・同じ大きさの●が残り、4つの●の回転（CSS の mark-spin）へそのままつながる
+  async function wipeToMark(hero) {
+    const dot = hero.querySelector(".about-mark i");
+    if (!dot) return;
+    const hb = hero.getBoundingClientRect(), db = dot.getBoundingClientRect();
+    const cx = db.left + db.width / 2 - hb.left, cy = db.top + db.height / 2 - hb.top, r = db.width / 2;
+    const R = Math.hypot(Math.max(cx, hb.width - cx), Math.max(cy, hb.height - cy)) + 2;  // 画面の四隅まで覆う大きさ
+    const wipe = document.createElement("div");
+    wipe.className = "end-wipe";
+    hero.appendChild(wipe);
+    hero.querySelectorAll(".sc.on").forEach((el) => el.classList.remove("on"));  // 紫の下はもう要らない
+    const at = (rad) => `circle(${rad}px at ${cx}px ${cy}px)`;
+    // 紫一色を一瞬（約0.07秒）見せてから、約0.62秒でしぼむ
+    await wipe.animate(
+      [{ clipPath: at(R) }, { clipPath: at(R), offset: 0.1, easing: "cubic-bezier(.65,0,.35,1)" }, { clipPath: at(r) }],
+      { duration: 690, fill: "forwards" }).finished.catch(() => {});
+    wipe.remove();
   }
 
   // FIND の黄色い玉：上の外から斜めに落ちてきて F・I・N・D の上で1回ずつ弾み、D からそのまま右下の外へ落ちていく
