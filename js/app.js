@@ -195,11 +195,7 @@
   };
 
   function about() {
-    const SPOTS = [[-1, -1, 0], [1, -1, 1], [-1, 1, 2], [1, 1, 3]];  // ロゴと同じ並び（紫・青・緑・オレンジ）
-    // 顔のある●（4人）。最後はロゴマークの4つの点に収まる
-    const faces = SPOTS
-      .map(([x, y, i]) => `<i class="face" data-x="${x}" data-y="${y}" style="--c:${i ? `var(--c-${i})` : "#9B6BD3"}"><b>* *</b></i>`).join("");
-    const dots = SPOTS.map(([, , i]) => `<i style="--c:var(--c-${i})"></i>`).join("");
+    const dots = [0, 1, 2, 3].map((i) => `<i style="--c:var(--c-${i})"></i>`).join("");  // ロゴと同じ並び（紫・青・緑・オレンジ）
     const cards = order.map((m) => `
       <article class="member" style="--c:${color(m)}">
         <div class="member-photo"><span>${esc(m)}</span></div>
@@ -212,10 +208,11 @@
       </article>`).join("");
     return `
       <section class="about-hero" aria-label="TREND JAM!">
-        <div class="troupe" aria-hidden="true">${faces}</div>
+        ${reel()}
         <span class="about-mark" aria-hidden="true">${dots}</span>
         <h1 class="about-logo">TREND JAM<b>!</b></h1>
         <p class="about-sub">ABOUT US ／ 私たちの活動</p>
+        <p class="sc-cap end-cap">トレンドジャム！</p>
       </section>
       <section class="about-copy">
         <p>情報があふれ、流行の寿命がどんどん短くなるいま、「売れたもの」を追いかけるだけでなく「これから来る兆し」をつかまえたい。</p>
@@ -228,74 +225,164 @@
       <p class="about-back"><a class="btn" href="#/">最新号を見る →</a></p>`;
   }
 
-  // 私たちの活動の冒頭：4人の●が四隅から集まる → 表情を変えてまばたき → 輪になってくるくる回る → 一度外へ広がる
-  // → それぞれ縮んでロゴマークの4つの点に収まり、ロゴが出る（●が4つ＝4人）
-  let heroTimer = null;
+  // ---------- 私たちの活動の冒頭リール ----------
+  // 場面ごとに背景色ごと切り替わる約5秒のリール → 最後に4つの点（4人）とロゴが出て止まる
+  const SCENES = [
+    { key: "dot", cap: "ひとつの気づきから。" },
+    { key: "find", word: "FIND", cap: "見つける。" },
+    { key: "bring", word: "BRING", cap: "持ち寄る。" },
+    { key: "jam", word: "JAM", cap: "重ねる。" },
+  ];
+  const letters = (w) => [...w].map((ch, i) => `<span style="--i:${i}">${esc(ch)}</span>`).join("");
+  function reel() {
+    // JAM の場面のタイル：8×3 マスを全部埋めて長方形に（四隅は角の立つ四角）。4人の色＋黒
+    // 「-」は真ん中の帯（JAM）が乗るマス。左上から斜めの波のように順に出る
+    const C = { P: "var(--c-0)", B: "var(--c-1)", G: "var(--c-2)", O: "var(--c-3)", K: "var(--ink)" };
+    const LAYOUT = [
+      ["square P", "circle O", "stripes B", "quarter G", "ring K", "half O", "bars B", "square G"],
+      ["half B", "ring G", "-", "-", "-", "-", "circle P", "stripes O"],
+      ["square O", "bars P", "dot K", "circle G", "quarter B", "stripes P", "ring O", "square P"],
+    ];
+    const tiles = LAYOUT.flatMap((row, r) => row.map((cell, c) => {
+      if (cell === "-") return `<b class="t-gap"></b>`;
+      const [shape, col] = cell.split(" ");
+      return `<i class="t-${shape}" style="--c:${C[col]};--d:${(r + c) * 32}ms"></i>`;
+    })).join("");
+    const body = {
+      dot: `<span class="dot-core"></span><span class="dot-ring"></span><span class="dot-ring r2"></span>`,
+      find: `<span class="find-ball"></span><h2 class="sc-word drop">${letters("FIND")}</h2>`,
+      bring: `<span class="bring-axis"></span><h2 class="sc-word rise">${letters("BRING")}</h2>`,
+      jam: `<div class="jam-grid">${tiles}<h2 class="sc-word jam-word">${letters("JAM")}</h2></div>`,
+    };
+    return `
+      <div class="reel" aria-hidden="true">
+        ${SCENES.map((sc, i) => `
+          <div class="sc sc-${sc.key}" data-i="${i}">
+            ${body[sc.key]}
+            <p class="sc-cap">${sc.cap}</p>
+          </div>`).join("")}
+        <p class="hud hud-tl">TREND JAM! — REEL 2026</p>
+        <p class="hud hud-tr"><span class="hud-no">01</span> / 0${SCENES.length}</p>
+      </div>
+      <button class="reel-skip" type="button">スキップ ›</button>`;
+  }
+
+  let reelRun = 0;
   function playHero() {
-    clearInterval(heroTimer);
+    const run = ++reelRun;
     const hero = app.querySelector(".about-hero");
     if (!hero) return;
-    const faces = [...hero.querySelectorAll(".face")];
-    if (matchMedia("(prefers-reduced-motion: reduce)").matches || !hero.animate) {
+    const finish = () => {
+      if (run !== reelRun) return;
+      hero.classList.remove("playing");
       hero.classList.add("done");
-      return;
-    }
+      hero.querySelectorAll(".sc.on").forEach((el) => el.classList.remove("on"));
+    };
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches || !hero.animate) { finish(); return; }
     hero.classList.add("playing");
-    const W = hero.clientWidth, H = hero.clientHeight;
-    const S = Math.round(Math.min(H * 0.36, W * 0.24, 220));  // ●の大きさ
-    hero.style.setProperty("--s", S + "px");
+    let skipped = false;
+    hero.querySelector(".reel-skip").addEventListener("click", () => { skipped = true; finish(); });
+    // 待ち時間はアニメーションの時計で数える（裏のタブで開いたときもずれない）
+    const wait = (ms) => hero.animate([], { duration: ms }).finished;
+    // 緩急：最初の「気づき」はゆっくり、そこからは速いテンポで
+    const DUR = [1800, 1400, 800, 1150];
+    const scenes = [...hero.querySelectorAll(".sc")];
+    const no = hero.querySelector(".hud-no");
+    (async () => {
+      let t = 0;
+      for (let i = 0; i < scenes.length; i++) {
+        if (skipped || run !== reelRun) return;
+        scenes.forEach((el) => el.classList.toggle("on", el === scenes[i]));
+        hero.dataset.tone = scenes[i].classList.contains("sc-jam") ? "light" : "dark";
+        no.textContent = String(i + 1).padStart(2, "0");
+        if (scenes[i].classList.contains("sc-find")) bounceBall(scenes[i]);
+        await wait(DUR[i]);
+        t += DUR[i];
+      }
+      if (!skipped) finish();
+    })();
+  }
 
-    // 登場の動きは開始前から最初の形で待つ（both）。後半の動きは始まるまで前の動きを邪魔しない（forwards）
-    const opt = (ms, delay, easing, fill = "both") => ({ duration: ms, delay, easing, fill });
-    const spot = (el) => [+el.dataset.x, +el.dataset.y];
-    const home = (el) => { const [x, y] = spot(el); return `translate(${x * S * 0.54}px, ${y * S * 0.54}px)`; };
-    // 1. 4人の●：画面の外から大きいまま滑り込み、真ん中で寄り合う（少し弾む）
-    faces.forEach((el, i) => {
-      const [x, y] = spot(el);
-      el.animate([
-        { transform: `translate(${x * W * 0.7}px, ${y * H * 0.85}px) scale(1.8)` },
-        { transform: `${home(el)} scale(1)` },
-      ], opt(650, i * 90, "cubic-bezier(.3,1.4,.5,1)"));
+  // FIND の黄色い玉：上の外から斜めに落ちてきて F・I・N・D の上で1回ずつ弾み、D からそのまま右下の外へ落ちていく
+  // ひとつの重力で放物線を計算して、細かいコマ（約16ms）で並べる（横は等速、縦だけ重力。最後の跳ねも同じ物理で続く）
+  // 文字の位置は画面の幅で変わるので、場面が始まったときに測って道すじを作る
+  function bounceBall(scene) {
+    const ball = scene.querySelector(".find-ball");
+    const spans = [...scene.querySelectorAll(".drop span")];
+    const box = scene.getBoundingClientRect();
+    const b = ball.offsetWidth;
+    const fs = parseFloat(getComputedStyle(spans[0]).fontSize);
+    // 玉の基準（CSS の left:50%; top:50%）からの移動量。文字の位置は動きの影響を受けない offsetLeft で測る（場面の左上から）
+    const ox = box.width / 2, oy = box.height / 2;
+    const land = spans.map((sp) => ({
+      x: sp.offsetLeft + sp.offsetWidth / 2 - b / 2 - ox,
+      y: sp.offsetTop + fs * 0.12 - b - oy,  // 文字の上端（字面の少し下がった位置）
+    }));
+
+    // 跳ねの高さ（文字の大きさに対する比）：F→I → I→N → N→D → D から外へ。だんだん低く
+    // 下げ幅を大きくすると跳ねの時間が縮んで横の速さが上がっていくので、控えめに下げる
+    const H = [0, 0.72, 0.63, 0.55, 0.47].map((r) => r * fs);
+    H[0] = land[0].y + oy + b * 1.5;  // 入り：場面の上の外から落ちてくる高さ
+    const T0 = 120, BUDGET = 1260;  // 場面は 1400ms。最初の待ちと、外へ抜けるまでをこの中に収める
+    const exitX = box.width - ox + b, exitY = box.height - oy + b;  // ここを越えたら画面の外
+
+    // 重力 g で道すじを作る（g が決まれば時間はすべて決まる）
+    const plan = (g) => {
+      const segs = [];
+      // 着地→着地：高さ h の山を越える放物線（出発と着地の高さの差も考える）
+      for (let i = 0; i < land.length - 1; i++) {
+        const p = land[i], q = land[i + 1], h = H[i + 1];
+        const vy = -Math.sqrt(2 * g * h);
+        const top = p.y - h;  // 山の頂点の高さ
+        const t = -vy / g + Math.sqrt(2 * Math.max(q.y - top, 0) / g);
+        segs.push({ x0: p.x, y0: p.y, vx: (q.x - p.x) / t, vy, t });
+      }
+      // D から外へ：同じ横の勢いで跳ね上がり、そのまま落ちて右か下の外へ抜けるまで
+      const d = land[land.length - 1], vx = segs[segs.length - 1].vx, vy = -Math.sqrt(2 * g * H[4]);
+      const tx = (exitX - d.x) / vx;
+      const ty = (-vy + Math.sqrt(vy * vy + 2 * g * (exitY - d.y))) / g;
+      segs.push({ x0: d.x, y0: d.y, vx, vy, t: Math.min(tx, ty), out: true });
+      // 入り：場面の上の外から、F→I と同じ横の速さで斜めに落ちてきて F に着地（F で急に減速しない）
+      const tIn = Math.sqrt(2 * H[0] / g);
+      segs.unshift({ x0: land[0].x - segs[0].vx * tIn, y0: land[0].y - H[0], vx: segs[0].vx, vy: 0, t: tIn });
+      return segs;
+    };
+    // 文字の大きさに合わせた重力で一度計算し、場面の時間に収まるように重力だけを強める（形は同じまま速くなる）
+    let g = (8 * H[1]) / (300 * 300);
+    let segs = plan(g);
+    const sum = segs.reduce((a, s) => a + s.t, 0);
+    if (sum > BUDGET) { g *= (sum / BUDGET) ** 2; segs = plan(g); }
+
+    // コマに並べる。着地の瞬間だけ玉を少しつぶす（下端をそろえるため、つぶした分だけ下げる）
+    const STEP = 16, total = T0 + segs.reduce((a, s) => a + s.t, 0);
+    const kf = [], lands = [];
+    const at = (ms, x, y, squash) => kf.push({
+      offset: Math.min(ms / total, 1),
+      transform: squash
+        ? `translate(${x}px, ${y + b * 0.09}px) scale(1.18, 0.82)`
+        : `translate(${x}px, ${y}px) scale(1, 1)`,
     });
-    // 2. 表情をパッパッと変える（●ごとに少しずらす）
-    const EYES = ["* *", "- -", "o o", "> <", "^ ^", "+ +", "o o", "- -"];
-    let tick = 0;
-    heroTimer = setInterval(() => {
-      tick++;
-      faces.forEach((f, i) => { f.firstChild.textContent = EYES[(tick + i * 2) % EYES.length]; });
-      if (tick >= 13) clearInterval(heroTimer);
-    }, 220);
-    // 3. 4人で輪になって、くるくる2回転（回りながら少し寄って小さくなる）
-    const SPIN = 1500, SPIN_MS = 1000;
-    const near = (el) => { const [x, y] = spot(el); return `translate(${x * S * 0.36}px, ${y * S * 0.36}px)`; };
-    faces.forEach((el) => el.animate([
-      { transform: `rotate(0deg) ${home(el)} scale(1)` },
-      { transform: `rotate(720deg) ${near(el)} scale(.78)` },
-    ], opt(SPIN_MS, SPIN, "cubic-bezier(.45,0,.35,1)", "forwards")));
-    // 4. 一度、外へパッと広がる
-    const BURST = SPIN + SPIN_MS, BURST_MS = 380;
-    const far = (el) => { const [x, y] = spot(el); return `translate(${x * W * 0.3}px, ${y * H * 0.3}px)`; };
-    faces.forEach((el) => el.animate([
-      { transform: `${near(el)} scale(.78)` },
-      { transform: `${far(el)} scale(.62)` },
-    ], opt(BURST_MS, BURST, "cubic-bezier(.2,.9,.3,1)", "forwards")));
-    // 5. 吸い込まれるように、ロゴマークの4つの点へまとまる
-    const mark = hero.querySelector(".about-mark");
-    const box = hero.getBoundingClientRect();
-    const cx = box.left + W / 2, cy = box.top + H / 2;
-    const T = BURST + BURST_MS + 90;
-    faces.forEach((f) => f.firstChild.animate([{ opacity: 1 }, { opacity: 0 }], opt(150, T, "linear", "forwards")));
-    const gather = [...mark.children].map((dot, i) => {
-      const r = dot.getBoundingClientRect();
-      return faces[i].animate([
-        { transform: `${far(faces[i])} scale(.62)` },
-        { transform: `translate(${r.left + r.width / 2 - cx}px, ${r.top + r.height / 2 - cy}px) scale(${r.width / S})` },
-      ], opt(560, T + i * 50, "cubic-bezier(.75,0,.25,1)", "forwards"));
+    at(0, segs[0].x0, segs[0].y0);
+    let t0 = T0;
+    at(t0, segs[0].x0, segs[0].y0);
+    segs.forEach((s) => {
+      for (let t = STEP; t < s.t; t += STEP) at(t0 + t, s.x0 + s.vx * t, s.y0 + s.vy * t + g * t * t / 2);
+      t0 += s.t;
+      const x = s.x0 + s.vx * s.t, y = s.y0 + s.vy * s.t + g * s.t * s.t / 2;
+      if (s.out) { at(t0, x, y); return; }
+      at(t0, x, y, true);  // 着地
+      lands.push(t0);
     });
-    // ロゴと下の帯を出し、点がそろったら本物のマークに入れ替える
-    // （タイマーではなくアニメーションの進み具合に合わせる。裏のタブで開いたときもずれないように）
-    hero.animate([], { duration: T + 480 }).finished.then(() => hero.classList.add("show"));
-    Promise.all(gather.map((a) => a.finished)).then(() => { hero.classList.remove("playing"); hero.classList.add("done", "show"); });
+    kf.forEach((k, i) => { if (i && k.offset < kf[i - 1].offset) k.offset = kf[i - 1].offset; });
+    kf[kf.length - 1].offset = 1;
+    ball.animate(kf, { duration: total, easing: "linear", fill: "both" });
+
+    // 着地した文字を少しだけ沈ませる（計算した着地の瞬間に合わせる）
+    spans.forEach((sp, i) => {
+      sp.animate(
+        [{ translate: "0 0" }, { translate: "0 7%", offset: 0.3 }, { translate: "0 0" }],
+        { duration: 200, delay: lands[i], easing: "ease-out" });
+    });
   }
 
   // ---------- TREND JAM! と著作権（#/copyright） ----------

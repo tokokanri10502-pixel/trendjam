@@ -356,7 +356,7 @@ mark { background: #FFD23F; color: inherit; border-radius: 3px; padding: 0 2px; 
 }
 .about-btn:hover, .about-btn.on { background: transparent; color: #FFD23F; }
 
-/* 顔のある●が集まって、ロゴマークの4つの点に収まる（動きは js/app.js の playHero） */
+/* 冒頭リール：場面ごとに背景色ごと切り替わり、最後に4つの点（4人）とロゴが出る（順番は js/app.js の playHero） */
 .about-hero {
   position: relative; overflow: hidden; isolation: isolate;
   min-height: clamp(360px, 62vh, 560px);
@@ -364,38 +364,124 @@ mark { background: #FFD23F; color: inherit; border-radius: 3px; padding: 0 2px; 
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   border-bottom: var(--line) solid var(--ink);
 }
-.troupe { position: absolute; inset: 0; pointer-events: none; }
-.about-hero { --s: 180px; }  /* ●の大きさ（playHero が画面に合わせて上書き） */
-.face {
-  position: absolute; left: 50%; top: 50%;
-  width: var(--s); height: var(--s); margin: calc(var(--s) / -2) 0 0 calc(var(--s) / -2);
-  border-radius: 50%; background: var(--c);
-  display: grid; place-items: center;
+.reel { position: absolute; inset: 0; z-index: 2; pointer-events: none; display: none; }
+.about-hero.playing .reel { display: block; }
+.about-hero.playing > :not(.reel):not(.reel-skip) { visibility: hidden; }
+.sc { position: absolute; inset: 0; display: none; place-items: center; overflow: hidden; }
+.sc.on { display: grid; }
+.sc-word {
+  margin: 0; display: flex; font: 400 clamp(64px, 15vw, 190px)/1 var(--display); letter-spacing: .02em;
+  white-space: nowrap;
 }
-.face b {
-  font: 800 calc(var(--s) * .3)/1 var(--latin); color: var(--ink);
-  letter-spacing: .35em; margin-right: -.35em; white-space: pre;
+.sc-word span { display: inline-block; }
+.sc-cap {
+  position: absolute; left: clamp(16px, 3vw, 32px); bottom: clamp(14px, 2.4vw, 26px); margin: 0;
+  font: 700 clamp(13px, 1.5vw, 16px)/1 var(--body); letter-spacing: .06em; opacity: 0;
+  animation: cap-in .4s ease-out .15s forwards;
 }
-.about-hero .face { visibility: hidden; }
-.about-hero.playing .face { visibility: visible; }
+.sc-dot .sc-cap { animation: cap-in .9s ease-out .4s forwards; }  /* 最初の場面はゆっくり */
+/* 最後のロゴ画面の左下（ほかの場面の添え書きと同じ位置・書体） */
+.end-cap { animation: none; }
+.about-hero.done .end-cap { animation: cap-in .6s ease-out .7s forwards; }
+@keyframes cap-in { from { opacity: 0; transform: translateY(8px); } to { opacity: .9; transform: none; } }
+.hud { position: absolute; margin: 0; font: 700 10.5px/1 var(--latin); letter-spacing: .14em; opacity: .65; z-index: 3; }
+.hud-tl { left: clamp(16px, 3vw, 32px); top: 18px; }
+.hud-tr { right: clamp(16px, 3vw, 32px); top: 18px; }
+.about-hero[data-tone="light"] .reel { color: var(--ink); }
+.reel-skip {
+  display: none; position: absolute; z-index: 4; right: clamp(16px, 3vw, 32px); top: 38px;
+  font: 900 12px/1 var(--body); color: inherit; background: transparent; cursor: pointer;
+  border: 1.5px solid currentColor; border-radius: 999px; padding: 6px 10px; opacity: .75;
+}
+.reel-skip:hover { opacity: 1; }
+.about-hero.playing .reel-skip { display: block; }
+.about-hero[data-tone="light"] .reel-skip { color: var(--ink); }
+
+/* 1. 点がひとつ：黒地に点がゆっくり現れ、輪がゆっくり広がる → 最後に画面いっぱいへ一気に膨らんで次の紫へ */
+.sc-dot { background: var(--ink); }
+.dot-core {
+  grid-area: 1 / 1; z-index: 1; width: 16px; height: 16px; border-radius: 50%; background: #fff;
+  animation: dot-in .8s cubic-bezier(.2,.9,.3,1.2) .15s both, dot-burst .3s cubic-bezier(.7,0,.9,.5) 1.5s forwards;
+}
+@keyframes dot-burst { 30% { background: #9B6BD3; } to { transform: scale(160); background: #9B6BD3; } }
+.dot-ring { grid-area: 1 / 1; width: 16px; height: 16px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,.55); animation: ring 1.5s cubic-bezier(.25,.6,.3,1) .35s both; }
+.dot-ring.r2 { animation-delay: .85s; }
+@keyframes dot-in { from { transform: scale(0); } }
+@keyframes ring { from { transform: scale(1); opacity: 1; } to { transform: scale(14); opacity: 0; } }
+
+/* 2. FIND：紫地。文字が上から落ちて弾み、黄色い玉が跳ねる */
+.sc-find { background: #9B6BD3; color: var(--ink); }
+.drop span { animation: drop .58s cubic-bezier(.3,0,.3,1) both; animation-delay: calc(var(--i) * 55ms); transform-origin: 50% 100%; }
+@keyframes drop {
+  0% { transform: translateY(-140%); }
+  55% { transform: translateY(0) scale(1.08, .82); }
+  72% { transform: translateY(-9%) scale(.97, 1.04); }
+  100% { transform: none; }
+}
+.find-ball {
+  position: absolute; left: 50%; top: 50%; width: clamp(22px, 3vw, 38px); aspect-ratio: 1; border-radius: 50%; background: #FFD23F;
+  box-shadow: 0 0 0 3px var(--ink); transform: translate(-60vw, -60vh);  /* 動きは js/app.js の bounceBall */
+}
+
+
+/* 3. BRING：青地。文字が時間差で下から立ち上がる */
+.sc-bring { background: var(--c-1); }
+.rise { overflow: hidden; padding-bottom: .06em; }
+.rise span { animation: rise .5s cubic-bezier(.2,.9,.2,1) both; animation-delay: calc(var(--i) * 55ms + 40ms); }
+@keyframes rise { from { transform: translateY(110%); } }
+.bring-axis { position: absolute; left: 8%; right: 8%; bottom: 22%; height: 2px; background: rgba(255,255,255,.5); transform-origin: left; animation: axis .6s cubic-bezier(.6,0,.2,1) both; }
+@keyframes axis { from { transform: scaleX(0); } }
+
+/* 4. JAM：クリーム地。4人の色の図形タイルがリズムよく埋まる */
+.sc-jam { background: #F4EFE6; color: var(--ink); }
+.jam-grid {
+  position: relative; display: grid; grid-template-columns: repeat(8, 1fr); grid-template-rows: repeat(3, 1fr);
+  width: min(86vw, 860px); aspect-ratio: 8 / 3;
+}
+.jam-grid > i { --c: var(--ink); position: relative; overflow: hidden; animation: tile .32s cubic-bezier(.3,1.5,.5,1) both; animation-delay: var(--d); }
+@keyframes tile { from { transform: scale(0); } }
+.t-circle { background: radial-gradient(circle, var(--c) 0 62%, transparent 63%); }
+.t-ring { background: radial-gradient(circle, transparent 0 30%, var(--c) 31% 62%, transparent 63%); }
+.t-quarter { background: radial-gradient(circle at 0 100%, var(--c) 0 99%, transparent 100%); }
+.t-stripes { background: repeating-linear-gradient(90deg, var(--c) 0 16%, transparent 16% 32%); }
+.t-half { background: linear-gradient(135deg, var(--c) 0 50%, transparent 50%); }
+.t-square { background: var(--c); }
+.t-dot { background: radial-gradient(circle, var(--c) 0 26%, transparent 27%); }
+.t-bars { background: repeating-linear-gradient(0deg, var(--c) 0 14%, transparent 14% 28%); }
+.jam-word {
+  position: absolute; left: 25%; right: 25%; top: 33.4%; height: 33.3%; justify-content: center; align-items: center; gap: .3em;
+  background: #FFD23F; font-size: clamp(30px, 6vw, 72px); letter-spacing: .1em;
+}
+.jam-word span { animation: tile .32s cubic-bezier(.3,1.6,.5,1) both; animation-delay: calc(370ms + var(--i) * 70ms); }
+
+/* 最後：4つの点（4人）が1つずつ出て、ロゴ */
 .about-mark { display: grid; grid-template-columns: repeat(2, clamp(14px, 2.4vw, 26px)); gap: clamp(4px, .6vw, 7px); margin-bottom: clamp(14px, 2vw, 22px); }
 .about-mark i { aspect-ratio: 1; border-radius: 50%; background: var(--c); }
 .about-mark i:nth-child(1) { background: #9B6BD3; }  /* ロゴの紫（暗い背景で見えるよう明るめ） */
-.about-hero.playing .about-mark { visibility: hidden; }
-.about-hero.playing:not(.show) .about-logo,
-.about-hero.playing:not(.show) .about-sub { visibility: hidden; animation: none; }
+/* 4つの点がポンと出ながら、まとまってくるくる2回転して止まる（2回転なので最後は元の並び） */
+.about-hero.done .about-mark { animation: mark-spin 1.1s cubic-bezier(.2,.7,.25,1) both; }
+@keyframes mark-spin { from { transform: rotate(-720deg) scale(.4); } }
+.about-hero.done .about-mark i { animation: dot-in .4s cubic-bezier(.3,1.7,.5,1) both; }
+.about-hero.done .about-mark i:nth-child(2) { animation-delay: .08s; }
+.about-hero.done .about-mark i:nth-child(3) { animation-delay: .16s; }
+.about-hero.done .about-mark i:nth-child(4) { animation-delay: .24s; }
+.about-hero.playing .about-logo, .about-hero.playing .about-sub { animation: none; }
+@media (prefers-reduced-motion: reduce) {
+  .about-hero.done .about-mark, .about-hero.done .about-mark i { animation: none; }
+  .about-hero.done .end-cap { animation: none; opacity: .9; }
+}
 .about-logo {
   margin: 0; font: 400 clamp(26px, 10vw, 124px)/1 var(--display); letter-spacing: .02em; white-space: nowrap;
   text-shadow: 6px 6px 0 var(--ink);
   -webkit-text-stroke: 2px var(--ink);
-  animation: pop .6s cubic-bezier(.3, 1.6, .5, 1) both;
+  animation: pop .6s cubic-bezier(.3, 1.6, .5, 1) .3s both;
 }
 .about-logo b { color: #FFD23F; font-weight: 400; }
 .about-sub {
   margin: 22px 0 0; background: var(--ink); padding: 11px 20px; border-radius: 999px;
   font: 800 clamp(16px, 2.1vw, 19px)/1 var(--latin); letter-spacing: .12em;  /* 下のコピーと同じ大きさ */
   white-space: nowrap;
-  animation: pop .5s ease-out .2s both;
+  animation: pop .5s ease-out .5s both;
 }
 @keyframes pop { from { opacity: 0; transform: translateY(18px) scale(.85); } }
 @media (prefers-reduced-motion: reduce) {
