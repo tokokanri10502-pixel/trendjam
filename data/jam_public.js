@@ -1501,30 +1501,6 @@ window.JAM = {
     }
    ],
    "vol": 11
-  },
-  {
-   "date": "2026-10-09",
-   "talks": [
-    {
-     "title": "【兵庫発】「暑い秋」をポジティブに転換する『セカンドサマープロジェクト』",
-     "body": [],
-     "tags": [],
-     "links": [
-      {
-       "url": "https://www.felissimo.co.jp/company/contents/press/nrr2026204365/",
-       "title": "リンク先を見る",
-       "site": "felissimo.co.jp",
-       "desc": "",
-       "thumb": "",
-       "icon": "https://www.felissimo.co.jp/company/contents/wp-content/uploads/2026/09/NRR2026204365_thumb.jpg"
-      }
-     ],
-     "member": "M.O",
-     "images": [],
-     "card": null
-    }
-   ],
-   "vol": 12
   }
  ]
 };
