@@ -1506,6 +1506,121 @@ window.JAM = {
    "date": "2026-10-09",
    "talks": [
     {
+     "title": "文具女子博 そごう広島店にて レシートの長さで沼度を測定!?",
+     "body": [],
+     "tags": [],
+     "links": [
+      {
+       "url": "https://bungujoshi.com/event/pop-up-in-hiroshima2026/",
+       "title": "文具女子博 広島ポップアップの開催案内",
+       "site": "文具女子博",
+       "desc": "",
+       "thumb": "",
+       "icon": "https://bungujoshi.com/wordpress/wp-content/uploads/2025/11/bjh2025kv_1920x1200_yoko_02.jpg"
+      }
+     ],
+     "member": "K.M",
+     "images": [],
+     "card": {
+      "head": "文具女子博が広島に出張",
+      "points": [
+       "10/1〜4 そごう広島店9階",
+       "入場は日時指定の前売制",
+       "入場料890円〜990円"
+      ]
+     }
+    },
+    {
+     "title": "Mrs.GREEN APPLE 旅のしおりは超豪華",
+     "body": [],
+     "tags": [],
+     "links": [
+      {
+       "url": "https://mrsgreenapple.com/feature/shadows_guidebook",
+       "title": "Mrs. GREEN APPLE ツアー連動企画の特設ページ",
+       "site": "Mrs. GREEN APPLE 公式サイト",
+       "desc": "",
+       "thumb": "",
+       "icon": "https://mrsgreenapple.com/static/mga/feature/shadows_bk5ec6cn/ogp.png"
+      }
+     ],
+     "member": "E.S",
+     "images": [],
+     "card": {
+      "head": "ファン情報で街ガイド",
+      "points": [
+       "開催都市ごとに一冊を制作",
+       "ファン投稿の名所・名物を掲載",
+       "街を巡る連動企画も実施"
+      ]
+     }
+    },
+    {
+     "title": "玩具 1兆円市場を支えるのは「キダルト」",
+     "body": [
+      "キーワードは、ノスタルジアトイ キダルトトイ クローズドパッケージ"
+     ],
+     "tags": [],
+     "links": [
+      {
+       "url": "https://cm-marketinglab.mynavi.jp/column/cm-kidadult-case/",
+       "title": "大人の玩具消費「キダルト」の解説記事",
+       "site": "マイナビ",
+       "desc": "",
+       "thumb": "",
+       "icon": "https://cm-marketinglab.mynavi.jp/wp-content/uploads/2025/03/12302cfb63ffc03a1062de79baabe50d.webp"
+      }
+     ],
+     "member": "I.M",
+     "images": [],
+     "card": {
+      "head": "大人が玩具市場を拡大中",
+      "points": [
+       "2023年度に初の1兆円超え",
+       "30〜40代が大人買い",
+       "限定品やSNS発信が後押し"
+      ]
+     }
+    },
+    {
+     "title": "長い夏を「我慢するもの」から「楽しむもの」へ、生活者向けのコミュニケーションの展開例を集めました。",
+     "body": [
+      "●食品では",
+      "【味の素】「まだなつ症」に悩む人々へ『五季そうさまプロジェクト』",
+      "●アパレルでは",
+      "【フェリシモ】異業種連携で長い夏をポジティブに転換する『セカンドサマープロジェクト』"
+     ],
+     "tags": [],
+     "links": [
+      {
+       "url": "https://www.ajinomoto.co.jp/hondashi/gokisousama/index.html",
+       "title": "「ほんだし」の残暑向け食卓企画の紹介",
+       "site": "味の素",
+       "desc": "",
+       "thumb": "",
+       "icon": "https://www.ajinomoto.co.jp/hondashi/gokisousama/img/ogp.png"
+      },
+      {
+       "url": "https://www.felissimo.co.jp/company/contents/press/nrr2026204365/",
+       "title": "兵庫の企業・施設による残暑企画の合同発表のお知らせ",
+       "site": "フェリシモ",
+       "desc": "",
+       "thumb": "",
+       "icon": "https://www.felissimo.co.jp/company/contents/wp-content/uploads/2026/09/NRR2026204365_thumb.jpg"
+      }
+     ],
+     "member": "M.O",
+     "images": [],
+     "card": {
+      "head": "夏と秋の間を第5の季節に",
+      "points": [
+       "9月以降の暑さを新しい季節と捉える",
+       "暑さで料理や食欲が落ちる不調に注目",
+       "秋の食材を夏向けに仕立てるレシピ5品"
+      ]
+     }
+    },
+    {
      "title": "動いている工場がそのまま美術館に。製塩・学生服・デニム・造船の現場7か所で作品を見る「瀬戸内産業芸術祭2026」が岡山・愛媛で開幕（10/31まで）",
      "body": [
       "なぜ今：ふだん見られない「ものづくりの裏側」を見たい人が増え、工場見学が観光やブランドづくりの入口になりつつある。全会場が予約制で、特別感も出している。",
