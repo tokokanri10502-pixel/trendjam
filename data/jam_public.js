@@ -1350,7 +1350,11 @@ window.JAM = {
     {
      "title": "「ダウンタイム」 Netflix 週間トレンド1位の話題作",
      "body": [],
-     "tags": [],
+     "tags": [
+      "動画配信",
+      "エンタメ",
+      "美容医療"
+     ],
      "links": [
       {
        "url": "https://www.netflix.com/jp/title/81603806",
@@ -1375,7 +1379,11 @@ window.JAM = {
     {
      "title": "AIショートドラマの勃興 AI俳優が一般的に!?",
      "body": [],
-     "tags": [],
+     "tags": [
+      "SNS",
+      "AI",
+      "ショートドラマ"
+     ],
      "links": [
       {
        "url": "https://www.tiktok.com/tag/ai%E3%82%B7%E3%83%A7%E3%83%BC%E3%83%88%E3%83%89%E3%83%A9%E3%83%9E",
@@ -1408,7 +1416,11 @@ window.JAM = {
     {
      "title": "ベルクでクエストが発生した 野菜の新しい買い方",
      "body": [],
-     "tags": [],
+     "tags": [
+      "小売",
+      "参加型",
+      "ゲーミフィケーション"
+     ],
      "links": [
       {
        "url": "https://www.youtube.com/shorts/Uo92V8JoxZU",
@@ -1437,7 +1449,11 @@ window.JAM = {
       "日本初の女性ファッション誌を創刊。代表作は『おはん』、自伝『生きて行く私』はベストセラーに",
       "結婚と離婚を4度経験。前向きで自由な生き方が、いまも多くの人をひきつける"
      ],
-     "tags": [],
+     "tags": [
+      "エンタメ",
+      "ご当地",
+      "朝ドラ"
+     ],
      "links": [
       {
        "url": "https://www.web.nhk/tv/an/blossom/pl/series-tep-R769G71XJ6",
@@ -1508,7 +1524,11 @@ window.JAM = {
     {
      "title": "文具女子博 そごう広島店にて レシートの長さで沼度を測定!?",
      "body": [],
-     "tags": [],
+     "tags": [
+      "広島",
+      "ポップアップ",
+      "文具"
+     ],
      "links": [
       {
        "url": "https://bungujoshi.com/event/pop-up-in-hiroshima2026/",
@@ -1533,7 +1553,11 @@ window.JAM = {
     {
      "title": "Mrs.GREEN APPLE 旅のしおりは超豪華",
      "body": [],
-     "tags": [],
+     "tags": [
+      "音楽",
+      "グッズ",
+      "冊子"
+     ],
      "links": [
       {
        "url": "https://mrsgreenapple.com/feature/shadows_guidebook",
@@ -1560,7 +1584,11 @@ window.JAM = {
      "body": [
       "キーワードは、ノスタルジアトイ キダルトトイ クローズドパッケージ"
      ],
-     "tags": [],
+     "tags": [
+      "玩具",
+      "大人需要",
+      "ノスタルジア"
+     ],
      "links": [
       {
        "url": "https://cm-marketinglab.mynavi.jp/column/cm-kidadult-case/",
@@ -1590,7 +1618,11 @@ window.JAM = {
       "●アパレルでは",
       "【フェリシモ】異業種連携で長い夏をポジティブに転換する『セカンドサマープロジェクト』"
      ],
-     "tags": [],
+     "tags": [
+      "暑さ対策",
+      "コラボ",
+      "季節"
+     ],
      "links": [
       {
        "url": "https://www.ajinomoto.co.jp/hondashi/gokisousama/index.html",
