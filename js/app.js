@@ -39,6 +39,16 @@
     else img.remove();
   };
 
+  // メモの行。「●」で始まる行は小見出し（四角の代わりに●）、その下の行は印なしで小見出しの文字にそろえる
+  function noteItems(lines) {
+    let under = false;
+    return lines.map((b) => {
+      const h = b.match(/^[●・]\s*(.+)$/);
+      if (h) { under = true; return `<li class="nh">${mark(h[1])}</li>`; }
+      return `<li${under ? ' class="ni"' : ""}>${mark(b)}</li>`;
+    }).join("");
+  }
+
   // ---------- カード ----------
   function card(t, v, { showVol = false } = {}) {
     const main = t.links.find((l) => l.thumb) || null;
@@ -56,7 +66,7 @@
       ? `<div class="hero${main.tall ? " tall" : ""}">${who}${vol}<a class="hero-link" href="${esc(main.url)}" target="_blank" rel="noopener"><img src="${esc(main.thumb)}" alt="" loading="lazy"></a></div>`
       : `<div class="hero plain">${who}${vol}<p>${mark(t.title)}</p></div>`;
     const notes = t.body.length
-      ? `<ul class="notes${t.body.some((b) => b.length > 60) ? " long" : ""}">${t.body.map((b) => `<li>${mark(b)}</li>`).join("")}</ul>` : "";
+      ? `<ul class="notes${t.body.some((b) => b.length > 60) ? " long" : ""}">${noteItems(t.body)}</ul>` : "";
     const tags = t.tags.length
       ? `<div class="tags">${t.tags.map((g) => `<a class="tag" href="${searchUrl("#" + g)}">#${mark(g)}</a>`).join("")}</div>` : "";
     const pics = t.images.length ? `<div class="pics">${t.images.map((p) => `<img src="${esc(p)}" alt="" loading="lazy">`).join("")}</div>` : "";

@@ -228,6 +228,12 @@ main { max-width: 1180px; margin: 0 auto; padding: 36px 20px 40px; }
 .card .notes li { position: relative; padding-left: 16px; color: var(--sub); font-weight: 700; }
 .card .notes li::before { content: ""; position: absolute; left: 0; top: .72em; width: 8px; height: 8px; border-radius: 2px; background: var(--c); }
 .card .notes.long li { font-size: 14px; }
+/* 「●」で始まる行は小見出し、その下の行は印なしで同じ位置にそろえる（js の noteItems） */
+.card .notes li.nh { color: var(--ink); }
+.card .notes li.nh::before { content: "●"; width: auto; height: auto; top: 0; border-radius: 0; background: none; color: var(--c); font-size: .8em; line-height: 2.1; }
+.card .notes li.ni::before { display: none; }
+.card .notes li { text-spacing-trim: trim-start; }  /* 行頭の「【」「『」などの左の余白を詰めて、文字の頭をそろえる */
+.card .notes li.nh + li.ni { margin-top: -2px; }
 
 .tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .tag {
