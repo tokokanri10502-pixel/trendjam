@@ -102,7 +102,7 @@
   function buzz(v) {
     if (!v.buzz?.length) return "";
     const item = (b, i) => {
-      const [first, ...rest] = b.links;
+      const first = b.links[0];
       const word = first
         ? `<a class="bz-word" href="${esc(first.url)}" target="_blank" rel="noopener">${esc(b.word)}</a>`
         : `<span class="bz-word">${esc(b.word)}</span>`;
