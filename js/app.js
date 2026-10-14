@@ -98,6 +98,24 @@
     return `今週の持ち寄り${people}トレンド${hasAi ? " ＋ AI's PICK" : ""}`;
   }
 
+  // 今週のバズワード（木曜に AI が記事数の伸びで選ぶ 3 語）。言葉はリンク先へ、2 本目以降はサイト名で並べる
+  function buzz(v) {
+    if (!v.buzz?.length) return "";
+    const item = (b, i) => {
+      const [first, ...rest] = b.links;
+      const word = first
+        ? `<a class="bz-word" href="${esc(first.url)}" target="_blank" rel="noopener">${esc(b.word)}</a>`
+        : `<span class="bz-word">${esc(b.word)}</span>`;
+      const sites = b.links.map((l) => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.site)} ↗</a>`).join("");
+      return `<li><span class="bz-no">${i + 1}</span>${word}${sites ? `<span class="bz-sites">${sites}</span>` : ""}</li>`;
+    };
+    return `
+      <section class="buzz" aria-label="今週のバズワード">
+        <h2 class="bz-title">今週のバズワード<small>今週グンと伸びた3ワード</small></h2>
+        <ol>${v.buzz.map(item).join("")}</ol>
+      </section>`;
+  }
+
   // ---------- 号 ----------
   function issue(v, isHome) {
     const i = vols.indexOf(v);
@@ -118,6 +136,7 @@
           ${pager}
         </div>
       </div>
+      ${buzz(v)}
       ${grid(v.talks.map((t) => card(t, v)))}`;
   }
 

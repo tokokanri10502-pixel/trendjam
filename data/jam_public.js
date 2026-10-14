@@ -1685,7 +1685,48 @@ window.JAM = {
      }
     }
    ],
-   "vol": 12
+   "vol": 12,
+   "buzz": [
+    {
+     "word": "ドパガキ",
+     "links": [
+      {
+       "url": "https://topics.smt.docomo.ne.jp/article/mrt/nation/mrt-2999515",
+       "site": "MRT宮崎放送"
+      },
+      {
+       "url": "https://news.livedoor.com/article/detail/32318089/",
+       "site": "ライブドアニュース"
+      }
+     ]
+    },
+    {
+     "word": "setlog",
+     "links": [
+      {
+       "url": "https://www.watch.impress.co.jp/docs/news/2116019.html",
+       "site": "Impress Watch"
+      },
+      {
+       "url": "https://realsound.jp/tech/2026/07/post-2470848.html",
+       "site": "Real Sound"
+      }
+     ]
+    },
+    {
+     "word": "麻辣湯",
+     "links": [
+      {
+       "url": "https://prtimes.jp/main/html/rd/p/000000221.000026876.html",
+       "site": "PR TIMES"
+      },
+      {
+       "url": "https://www.oricon.co.jp/pressrelease/3011861/",
+       "site": "ORICON NEWS"
+      }
+     ]
+    }
+   ]
   }
  ]
 };
