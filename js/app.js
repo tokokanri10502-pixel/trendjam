@@ -107,12 +107,23 @@
         ? `<a class="bz-word" href="${esc(first.url)}" target="_blank" rel="noopener">${esc(b.word)}</a>`
         : `<span class="bz-word">${esc(b.word)}</span>`;
       const sites = b.links.map((l) => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.site)} ↗</a>`).join("");
-      return `<li><span class="bz-no">${i + 1}</span>${word}${sites ? `<span class="bz-sites">${sites}</span>` : ""}</li>`;
+      const growth = b.growth ? `<span class="bz-up" title="前の4週の平均と比べたニュース記事数">×${b.growth.toFixed(1)}</span>` : "";
+      return `<li><span class="bz-no">${i + 1}</span><span class="bz-line">${word}${growth}</span>${sites ? `<span class="bz-sites">${sites}</span>` : ""}</li>`;
     };
     return `
       <section class="buzz" aria-label="今週のバズワード">
         <h2 class="bz-title">今週のバズワード<small>今週グンと伸びた3ワード</small></h2>
         <ol>${v.buzz.map(item).join("")}</ol>
+        <details class="bz-rule">
+          <summary>選び方</summary>
+          <ol>
+            <li>SNSやニュースで話題の言葉を20〜30個集めます</li>
+            <li>その言葉を含むニュース記事が、ここ1週間で何本出たかを数えます</li>
+            <li>1週間で15本以上出ている言葉を、その前の4週間の平均と比べて伸びた順に並べます（「×2.3」は2.3倍に伸びたという意味）</li>
+            <li>上から順に記事の中身を見て、同じ名前の別物や、事件・発売告知などで増えたものは外します</li>
+          </ol>
+          <p>※ 数えているのはニュース記事の数です。SNSだけで盛り上がっている言葉は入りにくいことがあります。</p>
+        </details>
       </section>`;
   }
 

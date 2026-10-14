@@ -1689,6 +1689,7 @@ window.JAM = {
    "buzz": [
     {
      "word": "ドパガキ",
+     "growth": 2.31,
      "links": [
       {
        "url": "https://topics.smt.docomo.ne.jp/article/mrt/nation/mrt-2999515",
@@ -1702,6 +1703,7 @@ window.JAM = {
     },
     {
      "word": "setlog",
+     "growth": 2.13,
      "links": [
       {
        "url": "https://www.watch.impress.co.jp/docs/news/2116019.html",
@@ -1715,6 +1717,7 @@ window.JAM = {
     },
     {
      "word": "麻辣湯",
+     "growth": 1.92,
      "links": [
       {
        "url": "https://prtimes.jp/main/html/rd/p/000000221.000026876.html",
