@@ -114,16 +114,6 @@
       <section class="buzz" aria-label="今週のバズワード">
         <h2 class="bz-title">今週のバズワード<small>今週グンと伸びた3ワード</small></h2>
         <ol>${v.buzz.map(item).join("")}</ol>
-        <details class="bz-rule">
-          <summary>選び方</summary>
-          <ol>
-            <li>SNSやニュースで話題の言葉を20〜30個集めます</li>
-            <li>その言葉を含むニュース記事が、ここ1週間で何本出たかを数えます</li>
-            <li>1週間で15本以上出ている言葉を、その前の4週間の平均と比べて伸びた順に並べます（「×2.3」は2.3倍に伸びたという意味）</li>
-            <li>上から順に記事の中身を見て、同じ名前の別物や、事件・発売告知などで増えたものは外します</li>
-          </ol>
-          <p>※ 数えているのはニュース記事の数です。SNSだけで盛り上がっている言葉は入りにくいことがあります。</p>
-        </details>
       </section>`;
   }
 
@@ -579,6 +569,40 @@
     });
   }
 
+  // ---------- バズワードの選び方（#/buzzword） ----------
+  function buzzRule() {
+    return `
+      <div class="cr">
+        <header class="cr-head">
+          <span class="kicker">BUZZ WORDS</span>
+          <h1>今週のバズワードの選び方</h1>
+          <p class="lead">号の上に並ぶ「今週グンと伸びた3ワード」は、毎週木曜にAIがこの手順で選んでいます</p>
+        </header>
+
+        <section class="cr-card" style="--c:var(--c-1)">
+          <span class="cr-label">選び方</span>
+          <div class="cr-reason"><span class="no">1</span><h3>話題の言葉を集める</h3>
+            <p>SNSやニュースで話題になっている言葉を、20〜30個集めます。</p></div>
+          <div class="cr-reason"><span class="no">2</span><h3>ニュース記事の数を数える</h3>
+            <p>その言葉を含むニュース記事が、ここ1週間で何本出たかを数えます。</p></div>
+          <div class="cr-reason"><span class="no">3</span><h3>伸びた順に並べる</h3>
+            <p>1週間で15本以上出ている言葉を、その前の4週間の平均と比べて、伸びた順に並べます。言葉の横の「×2.3」は、記事の数が2.3倍に伸びたという意味です。</p></div>
+          <div class="cr-reason"><span class="no">4</span><h3>中身を確かめて3つに絞る</h3>
+            <p>上から順に記事の中身を見て、同じ名前の別物（馬・お店など）や、事件・発売告知などで増えた言葉は外し、残った上位3つを載せます。</p></div>
+        </section>
+
+        <section class="cr-card" style="--c:var(--c-3)">
+          <span class="cr-label">ご注意</span>
+          <ul class="cr-asks">
+            <li>数えているのはニュース記事の数です。SNSだけで盛り上がっている言葉は入りにくいことがあります</li>
+            <li>選び方はまだ試しながら調整しています。気になる点があれば運営メンバーに知らせてください</li>
+          </ul>
+        </section>
+
+        <p class="about-back"><a class="btn" href="#/">← TREND JAM! のトップに戻る</a></p>
+      </div>`;
+  }
+
   // ---------- TREND JAM! と著作権（#/copyright） ----------
   function copyright() {
     return `
@@ -633,10 +657,14 @@
     const isSearch = h.startsWith("#/search");
     let html;
     document.querySelector(".about-btn").classList.toggle("on", h.startsWith("#/about"));
-    document.querySelector(".foot").hidden = h.startsWith("#/copyright");  // 著作権のページはフッターなし
+    document.querySelector(".foot").hidden = h.startsWith("#/copyright") || h.startsWith("#/buzzword");  // 著作権・選び方のページはフッターなし
     if (h.startsWith("#/about")) {
       html = about();
       document.title = "私たちの活動 — TREND JAM!";
+      if (document.activeElement !== qInput) qInput.value = "";
+    } else if (h.startsWith("#/buzzword")) {
+      html = buzzRule();
+      document.title = "今週のバズワードの選び方 — TREND JAM!";
       if (document.activeElement !== qInput) qInput.value = "";
     } else if (h.startsWith("#/copyright")) {
       html = copyright();
