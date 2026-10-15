@@ -1685,15 +1685,53 @@ window.JAM = {
      }
     }
    ],
-   "vol": 12,
+   "vol": 12
+  },
+  {
+   "date": "2026-10-16",
+   "talks": [
+    {
+     "title": "海外ファンの「推し部屋」を丸ごと再現。メルカリで国境を越えて売れた1,000点超のアニメ・ゲームグッズで3か国の部屋をつくる「世界の誰かの推し部屋展」が原宿で入場無料開催（10/28〜11/1）",
+     "body": [
+      "なぜ今：メルカリの越境取引は4年で約19倍の1,122億円に伸び、その半分以上がアニメや漫画などのポップカルチャー品。「日本の中古グッズが海外で宝物になる」流れを、数字ではなく部屋という形で見せている。",
+      "企画課への示唆：取引データや顧客の声を「誰かの部屋」「誰かの一日」として空間や冊子に仕立てる見せ方は、取引先の実績紹介や展示会ブース、周年企画の提案にそのまま使える。"
+     ],
+     "tags": [
+      "EC",
+      "体験型",
+      "推し活"
+     ],
+     "links": [
+      {
+       "url": "https://about.mercari.com/press/news/articles/261014_oshibeyaten/",
+       "title": "メルカリの体験型イベント開催のお知らせ",
+       "site": "メルカリ",
+       "desc": "",
+       "thumb": "",
+       "icon": "https://storage.googleapis.com/prd-about-asset-2020/2026/10/b958d9e3-261014_kv.png"
+      }
+     ],
+     "member": "AI",
+     "images": [],
+     "card": {
+      "head": "海外ファンの部屋を再現",
+      "points": [
+       "越境で売れた品を1,000点超",
+       "米・仏・台湾の3部屋を巡る",
+       "原宿で5日間・入場無料"
+      ]
+     }
+    }
+   ],
+   "vol": 13,
    "buzz": [
     {
      "word": "ドパガキ",
-     "growth": 2.31,
+     "growth": 3.07,
      "links": [
       {
-       "url": "https://topics.smt.docomo.ne.jp/article/mrt/nation/mrt-2999515",
-       "site": "MRT宮崎放送"
+       "url": "https://news.yahoo.co.jp/articles/f63f2c51aff1ef0833dfe5a9859e45eb7ededba0",
+       "site": "Yahoo!ニュース（MRT宮崎放送）"
       },
       {
        "url": "https://news.livedoor.com/article/detail/32318089/",
@@ -1702,30 +1740,30 @@ window.JAM = {
      ]
     },
     {
-     "word": "setlog",
-     "growth": 2.13,
+     "word": "界隈",
+     "growth": 2.23,
      "links": [
       {
-       "url": "https://www.watch.impress.co.jp/docs/news/2116019.html",
-       "site": "Impress Watch"
+       "url": "https://prtimes.jp/main/html/rd/p/000000086.000036471.html",
+       "site": "PR TIMES"
       },
       {
-       "url": "https://realsound.jp/tech/2026/07/post-2470848.html",
-       "site": "Real Sound"
+       "url": "https://news.mynavi.jp/article/20261009-5100756/",
+       "site": "マイナビニュース"
       }
      ]
     },
     {
      "word": "麻辣湯",
-     "growth": 1.92,
+     "growth": 1.63,
      "links": [
       {
-       "url": "https://prtimes.jp/main/html/rd/p/000000221.000026876.html",
-       "site": "PR TIMES"
+       "url": "https://www.tokyu.co.jp/area/naka-meguro/article/arti-01M4AHAZMF5EN92DZ2K2J99SVK/",
+       "site": "東急公式サイト"
       },
       {
-       "url": "https://www.oricon.co.jp/pressrelease/3011861/",
-       "site": "ORICON NEWS"
+       "url": "https://ja.wikipedia.org/wiki/%E9%BA%BB%E8%BE%A3%E7%87%99",
+       "site": "Wikipedia"
       }
      ]
     }
