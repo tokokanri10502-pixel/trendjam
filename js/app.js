@@ -199,25 +199,29 @@
   }
 
   // ---------- 私たちの活動 ----------
-  // メンバー紹介（まだの人は空欄の枠を出す）
+  // メンバー紹介（まだの人は空欄の枠を出す）。photo＝○の中の顔イラスト（目の高さ・顔の大きさをそろえて切り抜いた正方形）
   const PROFILE_FIELDS = [["role", "役割・得意分野"], ["words", "ひとこと紹介"], ["media", "愛用メディア"]];
   const PROFILES = {
     "K.M": {
+      photo: "img/members/km.png",
       role: "トレジャムのマンネ✨\nSNSを徘徊しながら、最新トレンドを日々キャッチしています！",
       words: "生粋の音楽ヲタクです！\n女性アイドル→K-POP→ボカロ→ジャニーズ→歌い手と、いろんな沼を渡り歩き現在はバンド（邦ロック）にどハマり中。\n激推しバンドは…パーカーズ！",
       media: "TikTok・Instagram・Netflix",
     },
     "E.S": {
+      photo: "img/members/es.png",
       role: "平成育ちのミーハー気質✨\nSNSや街なかのトレンドは、まずチェック！流行りものは気になったらすぐ試してみるタイプ。",
       words: "スイーツとキャラクターものが好き\n新作・限定・コラボの誘惑には、めっぽう弱いです。\n最近はガチャガチャの沼にハマっています😊",
       media: "X・TikTok・Instagram",
     },
     "I.M": {
+      photo: "img/members/im.png",
       role: "トレンドには左右されないタイプ。\n冷静な目で「今」を捉えています。\n流行を追うより、丁寧に暮らすことに心惹かれています。",
       words: "タニラー／アロイダー／ゴムの木マニア／アクアリスト／歴男／Coffeeholic…\n趣味が多すぎて、少しお疲れ気味です。",
       media: "テレビ・YouTube・歴史人",
     },
     "M.O": {
+      photo: "img/members/mo.png",
       role: "読書、AI、サンフレッチェ広島をこよなく愛すシルバーミドル。JAMの発起人。",
       words: "「好きなことを好きなだけ」＝努力の娯楽化。それこそが、最強の上達法だと思っています。",
       media: "Podcast・radiko・DAZN",
@@ -231,7 +235,9 @@
       .map(([x, y, i]) => `<i class="face" data-x="${x}" data-y="${y}" style="--c:${i ? `var(--c-${i})` : "#9B6BD3"}"><b>* *</b></i>`).join("");
     const cards = order.map((m) => `
       <article class="member" style="--c:${color(m)}">
-        <div class="member-photo"><span>${esc(m)}</span></div>
+        <div class="member-photo">${PROFILES[m]?.photo
+          ? `<span class="has-photo"><img src="${PROFILES[m].photo}" alt="${esc(m)}の似顔絵" loading="lazy"></span>`
+          : `<span>${esc(m)}</span>`}</div>
         <div class="member-body">
           <p class="member-name">${esc(m)}</p>
           ${PROFILE_FIELDS.map(([k, label]) => PROFILES[m]?.[k]
