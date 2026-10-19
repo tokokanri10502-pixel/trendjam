@@ -315,6 +315,7 @@ mark { background: #FFD23F; color: inherit; border-radius: 3px; padding: 0 2px; 
 @media (max-width: 720px) {
   .talks .card.ai { flex-direction: column; }
   .talks .card.ai .hero { flex: none; aspect-ratio: 2 / 1; min-height: 0; border-right: 0; border-bottom: var(--line) solid var(--ink); }
+  .talks .card.ai .hero.summary { aspect-ratio: auto; }  /* 公開版の要点の窓は文字の量に合わせて伸ばす（2:1 に固定すると下の札がはみ出す） */
   .talks .card.ai .hero img { object-fit: cover; }
   .talks .card.ai .card-body { padding: 16px 18px 18px; }
   .talks .card.ai h3 { font-size: 17px; }

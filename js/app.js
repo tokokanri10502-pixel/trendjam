@@ -61,7 +61,7 @@
       ? `<div class="hero summary">${who}${vol}<a class="hero-link" href="${esc(first.url)}" target="_blank" rel="noopener" aria-label="${esc(first.title)}"></a>
           <p class="sum-head">${mark(t.card.head)}</p>
           ${t.card.points.length ? `<ul>${t.card.points.map((p) => `<li>${mark(p)}</li>`).join("")}</ul>` : ""}
-          <span class="sum-site">${esc(first.site)} ↗</span></div>`
+          <span class="sum-site">${esc(first.site)} ↗︎</span></div>`
       : main
       ? `<div class="hero${main.tall ? " tall" : ""}">${who}${vol}<a class="hero-link" href="${esc(main.url)}" target="_blank" rel="noopener"><img src="${esc(main.thumb)}" alt="" loading="lazy"></a></div>`
       : `<div class="hero plain">${who}${vol}<p>${mark(t.title)}</p></div>`;
@@ -73,7 +73,7 @@
     const src = (l) => `
       <a class="src" href="${esc(l.url)}" target="_blank" rel="noopener">
         ${ico(l)}
-        <span class="t">${mark(l.title)}</span>${l.site !== l.title ? `<span class="s">${esc(l.site)}</span>` : ""}<span class="arrow">↗</span>
+        <span class="t">${mark(l.title)}</span>${l.site !== l.title ? `<span class="s">${esc(l.site)}</span>` : ""}<span class="arrow">↗︎</span>
       </a>`;
     const links = [main, ...others].filter(Boolean).map((l) => src(l)).join("");
     return `
@@ -106,7 +106,7 @@
       const word = first
         ? `<a class="bz-word" href="${esc(first.url)}" target="_blank" rel="noopener">${esc(b.word)}</a>`
         : `<span class="bz-word">${esc(b.word)}</span>`;
-      const sites = b.links.map((l) => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.site)} ↗</a>`).join("");
+      const sites = b.links.map((l) => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.site)} ↗︎</a>`).join("");
       const growth = b.growth ? `<span class="bz-up" title="前の4週の平均と比べたニュース記事数">×${b.growth.toFixed(1)}</span>` : "";
       return `<li><span class="bz-no">${i + 1}</span><span class="bz-line">${word}${growth}</span>${sites ? `<span class="bz-sites">${sites}</span>` : ""}</li>`;
     };
