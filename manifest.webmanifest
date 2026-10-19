@@ -1,0 +1,14 @@
+{
+  "name": "TREND JAM!",
+  "short_name": "TREND JAM!",
+  "start_url": "./",
+  "scope": "./",
+  "display": "browser",
+  "background_color": "#17131F",
+  "theme_color": "#17131F",
+  "icons": [
+    { "src": "img/icon/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "img/icon/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "img/icon/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
