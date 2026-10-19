@@ -1695,7 +1695,11 @@ window.JAM = {
      "body": [
       "ミツカンの「凹メシ」プロジェクト"
      ],
-     "tags": [],
+     "tags": [
+      "食品",
+      "癒し",
+      "凹メシ"
+     ],
      "links": [
       {
        "url": "https://www.mizkan.co.jp/hekomeshi/",
@@ -1722,7 +1726,11 @@ window.JAM = {
      "body": [
       "フェルメールの“牛乳を注ぐ女”がスープになって限定販売。"
      ],
-     "tags": [],
+     "tags": [
+      "外食",
+      "季節限定",
+      "アートコラボ"
+     ],
      "links": [
       {
        "url": "https://www.soup-stock-tokyo.com/information/sst-product-20260928/",
@@ -1749,7 +1757,11 @@ window.JAM = {
      "body": [
       "今広島で話題のご当地スーパーシール！仕掛け人はフレスタ!?"
      ],
-     "tags": [],
+     "tags": [
+      "小売",
+      "ご当地",
+      "ロゴシール"
+     ],
      "links": [
       {
        "url": "https://www.fresta.co.jp/logo-sticker-hiroshima",
@@ -1777,7 +1789,11 @@ window.JAM = {
       "「朝日×雲海×コスモス畑」朝5時から入場OK。",
       "希少性の掛け合わせで体験価値は上がる！"
      ],
-     "tags": [],
+     "tags": [
+      "観光",
+      "体験型",
+      "早朝営業"
+     ],
      "links": [
       {
        "url": "https://serayurien.com/%e7%a7%8b%e3%81%ae%e3%82%a4%e3%83%99%e3%83%b3%e3%83%88%e9%96%8b%e5%82%ac%e4%b8%ad%ef%bc%81/",
