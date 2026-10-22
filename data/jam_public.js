@@ -1893,6 +1893,88 @@ window.JAM = {
      ]
     }
    ]
+  },
+  {
+   "date": "2026-10-23",
+   "talks": [
+    {
+     "title": "「牡蠣マシマシで！」のひと言で牡蠣が増量。広島県観光連盟「牡蠣食う研」が県内50店で注文合言葉キャンペーンを開始、目印は店先の長提灯",
+     "body": [
+      "なぜ今：昨シーズンの牡蠣のへい死で「広島では今は牡蠣が食べられない」という誤解が広がり、注文が減った店もあった。値引きではなく「頼むと増える」という言いたくなる合言葉で、牡蠣シーズン入りに合わせて注目を取り戻そうとしている。",
+      "企画課への示唆：合言葉・提灯・メニュー表示を一式で揃える「店の目印でつなぐ周遊企画」は、商店街や自治体、食品メーカーの販促に、のぼり・POP・マップを組み合わせた提案としてそのまま応用できる。"
+     ],
+     "tags": [
+      "観光",
+      "ご当地",
+      "牡蠣"
+     ],
+     "links": [
+      {
+       "url": "https://prtimes.jp/main/html/rd/p/000000691.000013653.html",
+       "title": "広島県 牡蠣の増量キャンペーンのお知らせ",
+       "site": "PR TIMES",
+       "desc": "",
+       "thumb": "",
+       "icon": "https://prcdn.freetls.fastly.net/release_image/13653/691/13653-691-8747e82c59d41373a47fbe396a38d2ff-1544x1229.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260"
+      }
+     ],
+     "member": "AI",
+     "images": [],
+     "card": {
+      "head": "合言葉で牡蠣が増える広島の店",
+      "points": [
+       "県内50店が参加、今後も追加",
+       "注文時のひと言で牡蠣を増量",
+       "目印は店先の長い提灯"
+      ]
+     }
+    }
+   ],
+   "vol": 14,
+   "buzz": [
+    {
+     "word": "界隈",
+     "growth": 4.25,
+     "links": [
+      {
+       "url": "https://forbesjapan.com/articles/detail/106353",
+       "site": "Forbes JAPAN"
+      },
+      {
+       "url": "https://ja.wikipedia.org/wiki/%E7%95%8C%E9%9A%88",
+       "site": "Wikipedia"
+      }
+     ]
+    },
+    {
+     "word": "平成女児",
+     "growth": 2.16,
+     "links": [
+      {
+       "url": "https://diamond.jp/articles/-/383091",
+       "site": "ダイヤモンド・オンライン"
+      },
+      {
+       "url": "https://ja.wikipedia.org/wiki/%E5%B9%B3%E6%88%90%E5%A5%B3%E5%85%90",
+       "site": "Wikipedia"
+      }
+     ]
+    },
+    {
+     "word": "シール交換",
+     "growth": 1.94,
+     "links": [
+      {
+       "url": "https://www.atpress.ne.jp/news/628829",
+       "site": "@Press"
+      },
+      {
+       "url": "https://www.itmedia.co.jp/business/articles/2602/20/news053.html",
+       "site": "ITmedia ビジネスオンライン"
+      }
+     ]
+    }
+   ]
   }
  ]
 };
