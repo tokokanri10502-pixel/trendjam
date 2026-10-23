@@ -1898,6 +1898,146 @@ window.JAM = {
    "date": "2026-10-23",
    "talks": [
     {
+     "title": "あいの里新シーズンスタート Netflix",
+     "body": [
+      "人生模様×“キラキラしない”リアルすぎる恋愛ドキュメントバラエティ"
+     ],
+     "tags": [
+      "動画配信",
+      "大人需要",
+      "恋愛リアリティ"
+     ],
+     "links": [
+      {
+       "url": "https://about.netflix.com/ja/news/love-village-3-trailer",
+       "title": "あいの里 シーズン3配信のお知らせ",
+       "site": "Netflix",
+       "desc": "",
+       "thumb": "",
+       "icon": "https://i.ytimg.com/vi/43xhV4dWwgU/hqdefault.jpg"
+      }
+     ],
+     "member": "K.M",
+     "images": [],
+     "card": {
+      "head": "大人の恋旅、第3章へ",
+      "points": [
+       "10月6日から全23話を配信",
+       "35〜60歳が富士山麓で同居",
+       "MCは田村淳とベッキー"
+      ]
+     }
+    },
+    {
+     "title": "100日限定は新たなビジネスモデル",
+     "body": [
+      "今度は100日だけOPENするお店「遅刻でドーナツ」"
+     ],
+     "tags": [
+      "新業態",
+      "期間限定",
+      "ドーナツ"
+     ],
+     "links": [
+      {
+       "url": "https://100days-fc.com/",
+       "title": "100日限定店舗フランチャイズの紹介",
+       "site": "100日FC",
+       "desc": "",
+       "thumb": "",
+       "icon": "https://100days-fc.com/common/img/ogp.png"
+      },
+      {
+       "url": "https://www.instagram.com/tonybake_chocolate_.hiroshima/",
+       "title": "遅刻でドーナツ 広島店の公式アカウント",
+       "site": "Instagram",
+       "desc": "",
+       "thumb": "",
+       "icon": ""
+      }
+     ],
+     "member": "E.S",
+     "images": [],
+     "card": {
+      "head": "100日で畳む店が新常識",
+      "points": [
+       "期限付きで出店しやすい",
+       "全国79契約まで拡大",
+       "100日後は別業態に転換"
+      ]
+     }
+    },
+    {
+     "title": "〇〇コアの使い方",
+     "body": [
+      "今秋のファッショントレンドはグレープコア！"
+     ],
+     "tags": [
+      "アパレル",
+      "Z世代",
+      "コア系"
+     ],
+     "links": [
+      {
+       "url": "https://new-standard.co.jp/posts/11482",
+       "title": "「〇〇コア」という言葉の解説記事",
+       "site": "NEW STANDARD",
+       "desc": "",
+       "thumb": "",
+       "icon": "https://images.microcms-assets.io/assets/2d8857dd38b04ebc87488f863920bcfc/0b34723f18f54bc4994baf8eb372bed9/iStock-1323022787-1024x717.jpg?fit=fillmax&fill=blur&w=1200&h=630&auto=compress"
+      },
+      {
+       "url": "https://www.youtube.com/watch?v=dutu_wJUsKE",
+       "title": "めざましテレビの秋ファッション調査動画",
+       "site": "YouTube",
+       "desc": "",
+       "thumb": "",
+       "icon": "https://i.ytimg.com/vi/dutu_wJUsKE/maxresdefault.jpg"
+      }
+     ],
+     "member": "I.M",
+     "images": [],
+     "card": {
+      "head": "「コア」はZ世代の界隈語",
+      "points": [
+       "好みの美学で集う仲間の呼称",
+       "2022年バービーコアが流行",
+       "登録数は168件以上に"
+      ]
+     }
+    },
+    {
+     "title": "Jの次はB!? B.LEAUGEは熱狂の新たなコンテンツに！開幕動員は過去最多を記録。",
+     "body": [
+      "従来の1部（B1）から、新たなBプレミアへ。Bリーグの最上位カテゴリーは、昨季と同数の26チームで頂点を争う。誕生から昨季までの10年間は競技成績によって昇降格を行う「開放型」で運営してきたが、Bプレミアへの参入要件は所定の集客と売り上げ、アリーナを確保すること。世界最高峰のNBAなどが採用している「閉鎖型」を採用し勝敗での降格はなく、新たに基準に達したクラブを受け入れる形式に。"
+     ],
+     "tags": [
+      "スポーツ",
+      "エンタメ",
+      "Bリーグ"
+     ],
+     "links": [
+      {
+       "url": "https://www.bleague.jp/media_news/detail/id=666297",
+       "title": "Bリーグ開幕の動員とコミッショナーの話",
+       "site": "B.LEAGUE",
+       "desc": "",
+       "thumb": "",
+       "icon": ""
+      }
+     ],
+     "member": "M.O",
+     "images": [],
+     "card": {
+      "head": "Bリーグ開幕、動員最多",
+      "points": [
+       "最上位はBプレミアへ移行",
+       "26チームで頂点を争う",
+       "成績での降格がない仕組み"
+      ]
+     }
+    },
+    {
      "title": "「牡蠣マシマシで！」のひと言で牡蠣が増量。広島県観光連盟「牡蠣食う研」が県内50店で注文合言葉キャンペーンを開始、目印は店先の長提灯",
      "body": [
       "なぜ今：昨シーズンの牡蠣のへい死で「広島では今は牡蠣が食べられない」という誤解が広がり、注文が減った店もあった。値引きではなく「頼むと増える」という言いたくなる合言葉で、牡蠣シーズン入りに合わせて注目を取り戻そうとしている。",
