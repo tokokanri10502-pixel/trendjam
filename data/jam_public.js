@@ -2023,7 +2023,7 @@ window.JAM = {
        "site": "B.LEAGUE",
        "desc": "",
        "thumb": "",
-       "icon": ""
+       "icon": "https://www.bleague.jp/files/user/img/ogp_blg.png"
       }
      ],
      "member": "M.O",
@@ -2111,6 +2111,84 @@ window.JAM = {
       {
        "url": "https://www.itmedia.co.jp/business/articles/2602/20/news053.html",
        "site": "ITmedia ビジネスオンライン"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "date": "2026-10-30",
+   "talks": [
+    {
+     "title": "飲み終わった紙パックを店の回収箱に入れて撮るだけで、毎週ポイントが当たる。ライフ・カゴメ・日本テトラパックが近畿163店でリサイクルを「習慣」にする抽選キャンペーン（11/21まで）",
+     "body": [
+      "なぜ今：内側が銀色のアルミ付き紙パックはリサイクルできるのに、回収場所も認知も少なかった。メーカー・容器会社・スーパーが組み、店頭の体験イベントのあとに毎週の抽選を4週続けて「使ったらいつもの店へ持っていく」流れを作ろうとしている。",
+      "企画課への示唆：回収箱に二次元コードの掲示を付けるだけで、撮影・応募・クーポン配布までつながる。「回収箱＋掲示物＋アプリ連携」は、容器メーカーや小売のサステナ販促に、POPや告知物とセットで提案しやすい。"
+     ],
+     "tags": [
+      "小売",
+      "参加型",
+      "リサイクル"
+     ],
+     "links": [
+      {
+       "url": "https://prtimes.jp/main/html/rd/p/000000072.000108706.html",
+       "title": "紙パック回収キャンペーンのお知らせ",
+       "site": "PR TIMES",
+       "desc": "",
+       "thumb": "",
+       "icon": "https://prcdn.freetls.fastly.net/release_image/108706/72/108706-72-30d9cf608a56ffd47ce4496f23e6feec-1280x674.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260"
+      }
+     ],
+     "member": "AI",
+     "images": [],
+     "card": {
+      "head": "紙パック回収で毎週抽選",
+      "points": [
+       "近畿のライフ163店が対象",
+       "回収箱で撮影して応募",
+       "11/21まで4週連続で抽選"
+      ]
+     }
+    }
+   ],
+   "vol": 15,
+   "buzz": [
+    {
+     "word": "ぬい活",
+     "growth": 2.6,
+     "links": [
+      {
+       "url": "https://www.walkerplus.com/article/1323859/",
+       "site": "ウォーカープラス"
+      }
+     ]
+    },
+    {
+     "word": "setlog",
+     "growth": 1.7,
+     "links": [
+      {
+       "url": "https://webtan.impress.co.jp/n/2026/10/23/53484",
+       "site": "Web担当者Forum"
+      },
+      {
+       "url": "https://www.watch.impress.co.jp/docs/news/2116019.html",
+       "site": "Impress Watch"
+      }
+     ]
+    },
+    {
+     "word": "メロい",
+     "growth": 1.63,
+     "links": [
+      {
+       "url": "https://webtan.impress.co.jp/n/2025/11/10/50368",
+       "site": "Web担当者Forum"
+      },
+      {
+       "url": "https://www.walkerplus.com/article/1331067/",
+       "site": "ウォーカープラス"
       }
      ]
     }
