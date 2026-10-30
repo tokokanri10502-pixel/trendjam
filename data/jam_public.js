@@ -2124,12 +2124,16 @@ window.JAM = {
      "body": [
       "使用感が「マッチングアプリ」が今っぽい"
      ],
-     "tags": [],
+     "tags": [
+      "観光",
+      "マッチング",
+      "東北"
+     ],
      "links": [
       {
        "url": "https://www.jreast.co.jp/digtohoku/",
-       "title": "リンク先を見る",
-       "site": "jreast.co.jp",
+       "title": "東北旅行サイト「DIG!東北」",
+       "site": "JR東日本",
        "desc": "",
        "thumb": "",
        "icon": ""
@@ -2137,7 +2141,14 @@ window.JAM = {
      ],
      "member": "K.M",
      "images": [],
-     "card": null
+     "card": {
+      "head": "東北の旅先をディグる",
+      "points": [
+       "JR東日本の東北旅行サイト",
+       "テーマ別に旅プランを紹介",
+       "選び方はマッチングアプリ風"
+      ]
+     }
     },
     {
      "title": "インフルエンザにならないのど飴!?",
@@ -2145,12 +2156,16 @@ window.JAM = {
       "国産ハーブ「クロモジ」とは",
       "養命酒酒造のど飴が激バズり！"
      ],
-     "tags": [],
+     "tags": [
+      "菓子",
+      "バズ",
+      "クロモジ"
+     ],
      "links": [
       {
        "url": "https://www.imai-project.co.jp/blog/%F0%9F%8D%AC%E3%80%8C%E3%82%AF%E3%83%AD%E3%83%A2%E3%82%B8%E3%81%AE%E3%81%A9%E9%A3%B4%E3%80%8D%E3%81%8C%E3%83%90%E3%82%BA%E3%82%8B%E7%90%86%E7%94%B1-%E4%BB%8A%E5%B9%B4%E3%81%AE/",
-       "title": "リンク先を見る",
-       "site": "imai-project.co.jp",
+       "title": "クロモジのど飴の紹介ブログ",
+       "site": "IMAI企画",
        "desc": "",
        "thumb": "",
        "icon": "https://www.imai-project.co.jp/wp2022/wp-content/uploads/2026/09/b2b6fe98c83ec18fa5576eee99fd13bc.png"
@@ -2158,19 +2173,30 @@ window.JAM = {
      ],
      "member": "E.S",
      "images": [],
-     "card": null
+     "card": {
+      "head": "クロモジのど飴が話題",
+      "points": [
+       "養命酒製造の和漢のど飴",
+       "国産ハーブのクロモジを使用",
+       "黒蜜・生姜・ミントの3種"
+      ]
+     }
     },
     {
      "title": "LEAF WALK 稲沢爆食ハンターズ",
      "body": [
       "人気の秘密は「ゆるさ」にあり"
      ],
-     "tags": [],
+     "tags": [
+      "小売",
+      "イベント",
+      "爆食"
+     ],
      "links": [
       {
        "url": "https://walk-uny.com/leaf-walk/event/entry-42309.html",
-       "title": "リンク先を見る",
-       "site": "walk-uny.com",
+       "title": "「稲沢爆食ハンターズ」のお知らせ",
+       "site": "リーフウォーク稲沢",
        "desc": "",
        "thumb": "",
        "icon": "https://walk-uny.com/media/015/202307/ogp-leaf.png"
@@ -2178,7 +2204,14 @@ window.JAM = {
      ],
      "member": "I.M",
      "images": [],
-     "card": null
+     "card": {
+      "head": "モールで爆食ハンター",
+      "points": [
+       "愛知のリーフウォーク稲沢",
+       "8/7〜10/31の期間に開催",
+       "詳しくは公式Instagramで"
+      ]
+     }
     },
     {
      "title": "北米で大ヒットのドキュメンタリー映画「You Can See Everything」",
@@ -2186,20 +2219,24 @@ window.JAM = {
       "医療ベンチャー「セラノス」の創業者エリザベス・ホームズの収監前34日間に密着した作品",
       "セラノスは、指先の少量の血液で数百種類の検査ができると偽り、巨額の投資を集めた米国の医療ベンチャー。創業者エリザベス・ホームズは「女性版ジョブズ」ともてはやされ、企業価値は約90億ドルに達したが、実際には技術が完成しておらず、2015年の新聞報道で嘘が発覚。会社は2018年に解散。ホームズは詐欺罪で禁錮11年余りの判決を受けて服役中だが、今も無実を主張している。"
      ],
-     "tags": [],
+     "tags": [
+      "エンタメ",
+      "ドキュメンタリー",
+      "セラノス"
+     ],
      "links": [
       {
        "url": "https://natalie.mu/eiga/news/688341",
-       "title": "リンク先を見る",
-       "site": "natalie.mu",
+       "title": "ドキュメンタリーの予告公開ニュース",
+       "site": "映画ナタリー",
        "desc": "",
        "thumb": "",
        "icon": "https://ogre.natalie.mu/media/news/eiga/2026/0907/youcanseeeverything_202609.jpg?impolicy=ogp_fill&cropPlace=West"
       },
       {
        "url": "https://www.disneyplus.com/ja-jp/browse/entity-13988f84-f1c8-40dd-a73c-4e71ab4bbe63",
-       "title": "リンク先を見る",
-       "site": "disneyplus.com",
+       "title": "ドラマ「ドロップアウト」の配信ページ",
+       "site": "Disney+",
        "desc": "",
        "thumb": "",
        "icon": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/63e77d6f-75f6-4b11-a748-9ec4472f778a/compose?aspectRatio=1.78&format=webp&width=1200"
@@ -2207,7 +2244,14 @@ window.JAM = {
      ],
      "member": "M.O",
      "images": [],
-     "card": null
+     "card": {
+      "head": "詐欺の創業者に密着",
+      "points": [
+       "A24製作のドキュメンタリー",
+       "収監34日前から撮影",
+       "N・フィールダーらが監督"
+      ]
+     }
     },
     {
      "title": "飲み終わった紙パックを店の回収箱に入れて撮るだけで、毎週ポイントが当たる。ライフ・カゴメ・日本テトラパックが近畿163店でリサイクルを「習慣」にする抽選キャンペーン（11/21まで）",
