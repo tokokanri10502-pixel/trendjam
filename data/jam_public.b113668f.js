@@ -2023,7 +2023,7 @@ window.JAM = {
        "site": "B.LEAGUE",
        "desc": "",
        "thumb": "",
-       "icon": ""
+       "icon": "https://www.bleague.jp/files/user/img/ogp_blg.png"
       }
      ],
      "member": "M.O",
@@ -2111,6 +2111,174 @@ window.JAM = {
       {
        "url": "https://www.itmedia.co.jp/business/articles/2602/20/news053.html",
        "site": "ITmedia ビジネスオンライン"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "date": "2026-10-30",
+   "talks": [
+    {
+     "title": "DIG東北でみちのくを楽しむ",
+     "body": [
+      "使用感が「マッチングアプリ」が今っぽい"
+     ],
+     "tags": [],
+     "links": [
+      {
+       "url": "https://www.jreast.co.jp/digtohoku/",
+       "title": "リンク先を見る",
+       "site": "jreast.co.jp",
+       "desc": "",
+       "thumb": "",
+       "icon": ""
+      }
+     ],
+     "member": "K.M",
+     "images": [],
+     "card": null
+    },
+    {
+     "title": "インフルエンザにならないのど飴!?",
+     "body": [
+      "国産ハーブ「クロモジ」とは",
+      "養命酒酒造のど飴が激バズり！"
+     ],
+     "tags": [],
+     "links": [
+      {
+       "url": "https://www.imai-project.co.jp/blog/%F0%9F%8D%AC%E3%80%8C%E3%82%AF%E3%83%AD%E3%83%A2%E3%82%B8%E3%81%AE%E3%81%A9%E9%A3%B4%E3%80%8D%E3%81%8C%E3%83%90%E3%82%BA%E3%82%8B%E7%90%86%E7%94%B1-%E4%BB%8A%E5%B9%B4%E3%81%AE/",
+       "title": "リンク先を見る",
+       "site": "imai-project.co.jp",
+       "desc": "",
+       "thumb": "",
+       "icon": "https://www.imai-project.co.jp/wp2022/wp-content/uploads/2026/09/b2b6fe98c83ec18fa5576eee99fd13bc.png"
+      }
+     ],
+     "member": "E.S",
+     "images": [],
+     "card": null
+    },
+    {
+     "title": "LEAF WALK 稲沢爆食ハンターズ",
+     "body": [
+      "人気の秘密は「ゆるさ」にあり"
+     ],
+     "tags": [],
+     "links": [
+      {
+       "url": "https://walk-uny.com/leaf-walk/event/entry-42309.html",
+       "title": "リンク先を見る",
+       "site": "walk-uny.com",
+       "desc": "",
+       "thumb": "",
+       "icon": "https://walk-uny.com/media/015/202307/ogp-leaf.png"
+      }
+     ],
+     "member": "I.M",
+     "images": [],
+     "card": null
+    },
+    {
+     "title": "北米で大ヒットのドキュメンタリー映画「You Can See Everything」",
+     "body": [
+      "医療ベンチャー「セラノス」の創業者エリザベス・ホームズの収監前34日間に密着した作品",
+      "セラノスは、指先の少量の血液で数百種類の検査ができると偽り、巨額の投資を集めた米国の医療ベンチャー。創業者エリザベス・ホームズは「女性版ジョブズ」ともてはやされ、企業価値は約90億ドルに達したが、実際には技術が完成しておらず、2015年の新聞報道で嘘が発覚。会社は2018年に解散。ホームズは詐欺罪で禁錮11年余りの判決を受けて服役中だが、今も無実を主張している。"
+     ],
+     "tags": [],
+     "links": [
+      {
+       "url": "https://natalie.mu/eiga/news/688341",
+       "title": "リンク先を見る",
+       "site": "natalie.mu",
+       "desc": "",
+       "thumb": "",
+       "icon": "https://ogre.natalie.mu/media/news/eiga/2026/0907/youcanseeeverything_202609.jpg?impolicy=ogp_fill&cropPlace=West"
+      },
+      {
+       "url": "https://www.disneyplus.com/ja-jp/browse/entity-13988f84-f1c8-40dd-a73c-4e71ab4bbe63",
+       "title": "リンク先を見る",
+       "site": "disneyplus.com",
+       "desc": "",
+       "thumb": "",
+       "icon": "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/63e77d6f-75f6-4b11-a748-9ec4472f778a/compose?aspectRatio=1.78&format=webp&width=1200"
+      }
+     ],
+     "member": "M.O",
+     "images": [],
+     "card": null
+    },
+    {
+     "title": "飲み終わった紙パックを店の回収箱に入れて撮るだけで、毎週ポイントが当たる。ライフ・カゴメ・日本テトラパックが近畿163店でリサイクルを「習慣」にする抽選キャンペーン（11/21まで）",
+     "body": [
+      "なぜ今：内側が銀色のアルミ付き紙パックはリサイクルできるのに、回収場所も認知も少なかった。メーカー・容器会社・スーパーが組み、店頭の体験イベントのあとに毎週の抽選を4週続けて「使ったらいつもの店へ持っていく」流れを作ろうとしている。",
+      "企画課への示唆：回収箱に二次元コードの掲示を付けるだけで、撮影・応募・クーポン配布までつながる。「回収箱＋掲示物＋アプリ連携」は、容器メーカーや小売のサステナ販促に、POPや告知物とセットで提案しやすい。"
+     ],
+     "tags": [
+      "小売",
+      "参加型",
+      "リサイクル"
+     ],
+     "links": [
+      {
+       "url": "https://prtimes.jp/main/html/rd/p/000000072.000108706.html",
+       "title": "紙パック回収キャンペーンのお知らせ",
+       "site": "PR TIMES",
+       "desc": "",
+       "thumb": "",
+       "icon": "https://prcdn.freetls.fastly.net/release_image/108706/72/108706-72-30d9cf608a56ffd47ce4496f23e6feec-1280x674.png?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260"
+      }
+     ],
+     "member": "AI",
+     "images": [],
+     "card": {
+      "head": "紙パック回収で毎週抽選",
+      "points": [
+       "近畿のライフ163店が対象",
+       "回収箱で撮影して応募",
+       "11/21まで4週連続で抽選"
+      ]
+     }
+    }
+   ],
+   "vol": 15,
+   "buzz": [
+    {
+     "word": "ぬい活",
+     "growth": 2.6,
+     "links": [
+      {
+       "url": "https://www.walkerplus.com/article/1323859/",
+       "site": "ウォーカープラス"
+      }
+     ]
+    },
+    {
+     "word": "setlog",
+     "growth": 1.7,
+     "links": [
+      {
+       "url": "https://webtan.impress.co.jp/n/2026/10/23/53484",
+       "site": "Web担当者Forum"
+      },
+      {
+       "url": "https://www.watch.impress.co.jp/docs/news/2116019.html",
+       "site": "Impress Watch"
+      }
+     ]
+    },
+    {
+     "word": "メロい",
+     "growth": 1.63,
+     "links": [
+      {
+       "url": "https://webtan.impress.co.jp/n/2025/11/10/50368",
+       "site": "Web担当者Forum"
+      },
+      {
+       "url": "https://www.walkerplus.com/article/1331067/",
+       "site": "ウォーカープラス"
       }
      ]
     }
