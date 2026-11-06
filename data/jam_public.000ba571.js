@@ -2327,6 +2327,144 @@ window.JAM = {
      ]
     }
    ]
+  },
+  {
+   "date": "2026-11-06",
+   "talks": [
+    {
+     "title": "お休み",
+     "body": [],
+     "tags": [],
+     "links": [],
+     "member": "K.M",
+     "images": [],
+     "card": null
+    },
+    {
+     "title": "目ん玉引ん剝くほどうまいジェラートと話題！",
+     "body": [
+      "ヴェンキのスイーツが推し"
+     ],
+     "tags": [
+      "スイーツ",
+      "バズ",
+      "ジェラート"
+     ],
+     "links": [
+      {
+       "url": "https://venchi.co.jp/news/36",
+       "title": "ヴェンキのジェラートメニューのお知らせ",
+       "site": "Venchi",
+       "desc": "",
+       "thumb": "",
+       "icon": "https://venchi.co.jp/photo/news/20261014114850696.jpg"
+      }
+     ],
+     "member": "E.S",
+     "images": [],
+     "card": {
+      "head": "ヴェンキのジェラートの選び方",
+      "points": [
+       "サイズ3種でフレーバー数が変わる",
+       "国内11店で最大16種から選べる",
+       "カップかコーンとトッピングも選ぶ"
+      ]
+     }
+    },
+    {
+     "title": "デリッシュキッチンが選ぶ「食トレンドランキング」下半期2位!?の直パケレシピに注目！",
+     "body": [],
+     "tags": [
+      "食品",
+      "食トレンド",
+      "直パケレシピ"
+     ],
+     "links": [
+      {
+       "url": "https://www.e-recipe.site/tv/meza261104_package/",
+       "title": "めざましテレビで紹介された直パケレシピのまとめ",
+       "site": "知っ得レシピ",
+       "desc": "",
+       "thumb": "",
+       "icon": "https://www.e-recipe.site/wp-content/uploads/2026/11/mezamashi_kokochou_jikapake_recipe.webp"
+      }
+     ],
+     "member": "I.M",
+     "images": [],
+     "card": {
+      "head": "袋のまま作る「直パケ」料理",
+      "points": [
+       "11/4放送のめざましテレビで紹介",
+       "洗い物がほぼ出ず皿もいらない例も",
+       "街の声・SNS・企業のレシピを掲載"
+      ]
+     }
+    },
+    {
+     "title": "菅井汲展は一見の価値あり！",
+     "body": [
+      "30年以上前の作品なのに、どこか新しい。まさに温故知新。"
+     ],
+     "tags": [
+      "アート",
+      "ノスタルジア",
+      "菅井汲"
+     ],
+     "links": [
+      {
+       "url": "https://www.hpam.jp/museum/exhibitions/now.html#special",
+       "title": "広島県立美術館の菅井汲展のお知らせ",
+       "site": "広島県立美術館",
+       "desc": "",
+       "thumb": "",
+       "icon": ""
+      }
+     ],
+     "member": "M.O",
+     "images": [],
+     "card": {
+      "head": "没後30年 菅井汲の特別展",
+      "points": [
+       "会期は10/2〜12/6で期間中は無休",
+       "初期から晩年までの作風の変化を展示",
+       "愛車ポルシェや日本初公開の作品も"
+      ]
+     }
+    },
+    {
+     "title": "元日に推しから年賀状が届く。キタムラ「あなたに届く年賀状」受付開始（12/20まで）",
+     "body": [
+      "なぜ今：年賀状じまいが進む中、「推しから届く1枚」として元日の郵便受けを楽しみにする体験に作り変えている。",
+      "企画課への示唆：年賀状を「出す」から「受け取る」商品へ。IPと組めば、はがき1枚が880円のファングッズになる。"
+     ],
+     "tags": [
+      "エンタメ",
+      "キャラクター",
+      "年賀状"
+     ],
+     "links": [
+      {
+       "url": "https://nenga.kitamura.jp/sp/",
+       "title": "推しの年賀状サービス 申込ページ",
+       "site": "カメラのキタムラ",
+       "desc": "",
+       "thumb": "",
+       "icon": "https://nenga.kitamura.jp/_assets/wp-content/uploads/2026/10/bnr_column_IP.jpg"
+      }
+     ],
+     "member": "AI",
+     "images": [],
+     "card": {
+      "head": "推しが元日に年賀状をくれる",
+      "points": [
+       "人気作品のキャラから郵送",
+       "1枚880円、税込",
+       "1/1から順次お届け"
+      ]
+     }
+    }
+   ],
+   "vol": 16
   }
  ]
 };
