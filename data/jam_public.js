@@ -2515,6 +2515,20 @@ window.JAM = {
      ]
     },
     {
+     "word": "酷暑日",
+     "growth": 3.37,
+     "links": [
+      {
+       "url": "https://www.jma.go.jp/jma/press/2604/17a/20260417_40degree_name.pdf",
+       "site": "気象庁"
+      },
+      {
+       "url": "https://weather-jwa.jp/news/topics/post12199",
+       "site": "日本気象協会"
+      }
+     ]
+    },
+    {
      "word": "NISA貧乏",
      "growth": 2.7,
      "links": [
