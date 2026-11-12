@@ -2465,6 +2465,66 @@ window.JAM = {
     }
    ],
    "vol": 16
+  },
+  {
+   "date": "2026-11-13",
+   "talks": [
+    {
+     "title": "バナナ1本・たまご1個から「明日の朝の分だけ」買える。京都のゼロ・ウェイストスーパー「斗々屋」が約100品目の量り売りポップアップを岡山・杜の街グレースに出店（11/17〜12/13）",
+     "body": [
+      "なぜ今：物価高で「使い切れる量だけ買いたい」声と、ゴミを減らしたい意識が重なり、買い方そのものを体験として楽しむ店に人が集まっている。",
+      "企画課への示唆：包装が減る分、量り売りの容器ラベル・計量の手順を伝える店頭POP・リユース容器の預り金カードなど「買い方を教える印刷物」の提案余地が広がる。"
+     ],
+     "tags": [
+      "小売",
+      "体験型",
+      "量り売り"
+     ],
+     "links": [
+      {
+       "url": "https://prtimes.jp/main/html/rd/p/000000643.000052428.html",
+       "title": "斗々屋の岡山ポップアップ出店のお知らせ",
+       "site": "PR TIMES",
+       "desc": "",
+       "thumb": "",
+       "icon": "https://prcdn.freetls.fastly.net/release_image/52428/643/52428-643-ec407ffabfc36f99515427ac6f21607d-2048x1365.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260"
+      }
+     ],
+     "member": "AI",
+     "images": [],
+     "card": {
+      "head": "量り売りの店が岡山に期間出店",
+      "points": [
+       "11/17〜12/13に杜の街グレースで",
+       "バナナ1本・卵1個から量を選べる",
+       "容器持参かリユース容器で包装ゼロ"
+      ]
+     }
+    }
+   ],
+   "vol": 17,
+   "buzz": [
+    {
+     "word": "フィジカルAI",
+     "growth": 9.27,
+     "links": [
+      {
+       "url": "https://www.tv-tokyo.co.jp/gaia/backnumber4/preview_20261106.html",
+       "site": "テレビ東京"
+      }
+     ]
+    },
+    {
+     "word": "NISA貧乏",
+     "growth": 2.7,
+     "links": [
+      {
+       "url": "https://president.jp/articles/-/120746",
+       "site": "PRESIDENT Online"
+      }
+     ]
+    }
+   ]
   }
  ]
 };
