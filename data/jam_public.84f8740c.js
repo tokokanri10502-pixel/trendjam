@@ -2470,6 +2470,132 @@ window.JAM = {
    "date": "2026-11-13",
    "talks": [
     {
+     "title": "「日とと記」私と誰かのその日限りの交換日記アプリ",
+     "body": [],
+     "tags": [
+      "アプリ",
+      "癒し",
+      "交換日記"
+     ],
+     "links": [
+      {
+       "url": "https://diary.aaaaaso.com/hitotoki/",
+       "title": "見知らぬ誰かと日記を交わすアプリの公式サイト",
+       "site": "日とと記",
+       "desc": "",
+       "thumb": "",
+       "icon": "https://diary.aaaaaso.com/hitotoki/static/ogp.png?v=1794462644"
+      }
+     ],
+     "member": "K.M",
+     "images": [],
+     "card": {
+      "head": "書くと誰かの今日の日記が届く",
+      "points": [
+       "受け取れるのは1日1通まで",
+       "いいねもフォローもなし",
+       "届けない設定で手元にだけ保存"
+      ]
+     }
+    },
+    {
+     "title": "ミャクミャクブームは終わらない！日本ミャク景",
+     "body": [],
+     "tags": [
+      "IPビジネス",
+      "ご当地",
+      "ミャクミャク"
+     ],
+     "links": [
+      {
+       "url": "https://myakumyakuhouse.jp/myakukei/",
+       "title": "47都道府県のミャクミャク企画 公式ページ",
+       "site": "ミャクミャク情報サイト",
+       "desc": "",
+       "thumb": "",
+       "icon": "https://myakumyakuhouse.jp/myakukei/assets/images/ogp.png"
+      }
+     ],
+     "member": "E.S",
+     "images": [],
+     "card": {
+      "head": "47都道府県に47のミャクミャク",
+      "points": [
+       "県ごとに2種類のデザイン",
+       "公式ライセンス商品を展開",
+       "実店舗とオンラインで販売"
+      ]
+     }
+    },
+    {
+     "title": "鮮魚版ロピア!?関東で「角上魚類」が話題",
+     "body": [],
+     "tags": [
+      "小売",
+      "差別化",
+      "角上魚類"
+     ],
+     "links": [
+      {
+       "url": "https://www.kakujoe.co.jp/shoplist.php",
+       "title": "鮮魚専門店 角上魚類の店舗一覧",
+       "site": "角上魚類",
+       "desc": "",
+       "thumb": "",
+       "icon": ""
+      },
+      {
+       "url": "https://www.youtube.com/shorts/WEU2xANPv7g",
+       "title": "角上魚類の開店前の様子を映したショート動画",
+       "site": "YouTube",
+       "desc": "",
+       "thumb": "",
+       "icon": "https://i.ytimg.com/vi/WEU2xANPv7g/hq720.jpg?sqp=-oaymwEdCJUDENAFSFXyq4qpAw8IARUAAIhCcAHAAQbQAQE=&rs=AOn4CLCcTbW2At0F6Xu6k6z1OYR3euhz-w"
+      }
+     ],
+     "member": "I.M",
+     "images": [],
+     "card": {
+      "head": "新潟発の鮮魚専門店が関東に",
+      "points": [
+       "全23店舗、埼玉県に9店",
+       "本店は新潟県の寺泊",
+       "寿司や刺身も扱う"
+      ]
+     }
+    },
+    {
+     "title": "「武器としての経営思考」岩井俊兵著",
+     "body": [
+      "11/6(金) 日経MJにて紹介の良書"
+     ],
+     "tags": [
+      "出版",
+      "ビジネス書",
+      "経営戦略"
+     ],
+     "links": [
+      {
+       "url": "https://www.nikkei.com/article/DGXZQOUC2051W0Q6A021C2000000/",
+       "title": "岩尾俊兵著『武器としての経営思考』の書評",
+       "site": "日本経済新聞",
+       "desc": "",
+       "thumb": "",
+       "icon": "https://article-image-ix.nikkei.com/https%3A%2F%2Fimgix-proxy.n8s.jp%2FDSXZQO3753184020102026000000-1.jpg?auto=compress&bg=FFFF&fill=blur&fit=fill&fm=jpg&h=630&w=1200&s=924b707c48b1e71650019e9b39befd02"
+      }
+     ],
+     "member": "M.O",
+     "images": [],
+     "card": {
+      "head": "選ぶか捨てるか以外の道を探る",
+      "points": [
+       "日経MJで11月6日に紹介",
+       "数字だけの優先順位に疑問",
+       "会員特典の炎上を例に解説"
+      ]
+     }
+    },
+    {
      "title": "バナナ1本・たまご1個から「明日の朝の分だけ」買える。京都のゼロ・ウェイストスーパー「斗々屋」が約100品目の量り売りポップアップを岡山・杜の街グレースに出店（11/17〜12/13）",
      "body": [
       "なぜ今：物価高で「使い切れる量だけ買いたい」声と、ゴミを減らしたい意識が重なり、買い方そのものを体験として楽しむ店に人が集まっている。",
@@ -2511,6 +2637,20 @@ window.JAM = {
       {
        "url": "https://www.tv-tokyo.co.jp/gaia/backnumber4/preview_20261106.html",
        "site": "テレビ東京"
+      }
+     ]
+    },
+    {
+     "word": "酷暑日",
+     "growth": 3.37,
+     "links": [
+      {
+       "url": "https://www.jma.go.jp/jma/press/2604/17a/20260417_40degree_name.pdf",
+       "site": "気象庁"
+      },
+      {
+       "url": "https://weather-jwa.jp/news/topics/post12199",
+       "site": "日本気象協会"
       }
      ]
     },
