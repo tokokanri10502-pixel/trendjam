@@ -2665,6 +2665,80 @@ window.JAM = {
      ]
     }
    ]
+  },
+  {
+   "date": "2026-11-20",
+   "talks": [
+    {
+     "title": "ゲーセンの1フロアが18日間だけ「スナック」に。GiGO秋葉原が、好きなジャンルの腕輪とスマホでのおごりで初対面同士が話せる「GiGO NEO SNACK」を開催（11/30まで）",
+     "body": [
+      "なぜ今：SNSでつながるのが当たり前になった20〜30代ほど「リアルで話せる居場所」を求めていて、料金が分かりにくく入りづらかったスナックが、明朗会計とゲームの気軽さで入り直されている。",
+      "企画課への示唆：「推しバンド」のように身につけるだけで会話のきっかけになる仕掛けは、イベントや店頭で名札・缶バッジ・リストバンド・話題カードなどの印刷物に置き換えて提案できる。"
+     ],
+     "tags": [
+      "エンタメ",
+      "新業態",
+      "スナック"
+     ],
+     "links": [
+      {
+       "url": "https://prtimes.jp/main/html/rd/p/000001234.000034930.html",
+       "title": "GiGO秋葉原の期間限定スナックのお知らせ",
+       "site": "PR TIMES",
+       "desc": "",
+       "thumb": "",
+       "icon": "https://prcdn.freetls.fastly.net/release_image/34930/1234/34930-1234-30380c3dd0030babc88562a02652be37-3900x2600.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260"
+      }
+     ],
+     "member": "AI",
+     "images": [],
+     "card": {
+      "head": "ゲーセンにスナックが期間出店",
+      "points": [
+       "11/13〜30の18日間・20歳以上",
+       "腕輪の色で好きな話題が分かる",
+       "スマホで他の客に一杯おごれる"
+      ]
+     }
+    }
+   ],
+   "vol": 18,
+   "buzz": [
+    {
+     "word": "フィジカルAI",
+     "growth": 6.71,
+     "links": [
+      {
+       "url": "https://news.web.nhk/newsweb/na/nd-20261111de74472",
+       "site": "NHKニュース"
+      }
+     ]
+    },
+    {
+     "word": "NISA貧乏",
+     "growth": 2.12,
+     "links": [
+      {
+       "url": "https://www.hakuhodo.co.jp/magazine/267452/",
+       "site": "博報堂"
+      }
+     ]
+    },
+    {
+     "word": "ドパガキ",
+     "growth": 1.58,
+     "links": [
+      {
+       "url": "https://news.web.nhk/newsweb/na/nd-20261117de77160",
+       "site": "NHKニュース"
+      },
+      {
+       "url": "https://ja.wikipedia.org/wiki/ドパガキ",
+       "site": "Wikipedia"
+      }
+     ]
+    }
+   ]
   }
  ]
 };
