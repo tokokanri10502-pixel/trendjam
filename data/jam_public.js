@@ -2670,6 +2670,128 @@ window.JAM = {
    "date": "2026-11-20",
    "talks": [
     {
+     "title": "SWITCH2 トモダチコレクション「わくわく生活」",
+     "body": [
+      "ひとつの島での生活をゆるく見守るゲーム"
+     ],
+     "tags": [
+      "エンタメ",
+      "癒し",
+      "ゲーム"
+     ],
+     "links": [
+      {
+       "url": "https://www.nintendo.com/jp/switch/blfga/index.html",
+       "title": "トモダチコレクション わくわく生活 公式サイト",
+       "site": "任天堂",
+       "desc": "",
+       "thumb": "",
+       "icon": "https://www.nintendo.com/jp/switch/blfga/sns.png"
+      }
+     ],
+     "member": "K.M",
+     "images": [],
+     "card": {
+      "head": "Miiの島暮らしをゆるく見守る",
+      "points": [
+       "2026年4月16日発売",
+       "Switch 2でも遊べる",
+       "友情も恋愛も結婚も起きる"
+      ]
+     }
+    },
+    {
+     "title": "ミルメーク コーヒー",
+     "body": [
+      "平成レトロな美味しさ"
+     ],
+     "tags": [
+      "食品",
+      "ノスタルジア",
+      "ミルメーク"
+     ],
+     "links": [
+      {
+       "url": "https://www.milmake.com/product/milmake/",
+       "title": "ミルメークの商品紹介",
+       "site": "大島食品工業",
+       "desc": "",
+       "thumb": "",
+       "icon": ""
+      }
+     ],
+     "member": "E.S",
+     "images": [],
+     "card": {
+      "head": "牛乳に混ぜる給食の定番",
+      "points": [
+       "コーヒー味は顆粒も液体も",
+       "家庭用は5個・20個入り",
+       "お菓子作り用の大袋もある"
+      ]
+     }
+    },
+    {
+     "title": "筒賀の大銀杏 圧巻の黄金の絨毯",
+     "body": [],
+     "tags": [
+      "観光",
+      "季節",
+      "広島"
+     ],
+     "links": [
+      {
+       "url": "https://cs-akiota.or.jp/enjoy/tourism/tsutsuga-ooichou/",
+       "title": "筒賀の大銀杏の観光案内",
+       "site": "あきおおたから",
+       "desc": "",
+       "thumb": "",
+       "icon": "https://cs-akiota.or.jp/assets/img/ogp.jpg"
+      }
+     ],
+     "member": "I.M",
+     "images": [],
+     "card": {
+      "head": "樹齢1100年超の大イチョウ",
+      "points": [
+       "高さ48m・幹回り8.2m",
+       "見頃は10月下旬〜11月中旬",
+       "毎年11月上旬にライトアップ"
+      ]
+     }
+    },
+    {
+     "title": "川邊 健太郎 AIソロプレナー （前LINEヤフー 代表取締役会長）",
+     "body": [
+      "「IT産業発展の30年間はAI駆動型社会の準備期間でしかない」"
+     ],
+     "tags": [
+      "AI",
+      "経営戦略",
+      "ソロプレナー"
+     ],
+     "links": [
+      {
+       "url": "https://japan.cnet.com/article/35242014/",
+       "title": "川邊健太郎氏の退任を報じる記事",
+       "site": "CNET Japan",
+       "desc": "",
+       "thumb": "",
+       "icon": "https://japan.cnet.com/storage/2025/12/23/82084ac2170dd3d32bdb53e3c029c758/2025-12-23_17.12%E3%81%AE%E7%94%BB%E5%83%8F.jpeg"
+      }
+     ],
+     "member": "M.O",
+     "images": [],
+     "card": {
+      "head": "川邊会長が退任しAIで起業",
+      "points": [
+       "2026年6月の株主総会で退任",
+       "任期満了にともなう退任",
+       "AIと本人だけの会社を作る"
+      ]
+     }
+    },
+    {
      "title": "ゲーセンの1フロアが18日間だけ「スナック」に。GiGO秋葉原が、好きなジャンルの腕輪とスマホでのおごりで初対面同士が話せる「GiGO NEO SNACK」を開催（11/30まで）",
      "body": [
       "なぜ今：SNSでつながるのが当たり前になった20〜30代ほど「リアルで話せる居場所」を求めていて、料金が分かりにくく入りづらかったスナックが、明朗会計とゲームの気軽さで入り直されている。",
