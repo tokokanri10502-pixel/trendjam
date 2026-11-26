@@ -2861,6 +2861,84 @@ window.JAM = {
      ]
     }
    ]
+  },
+  {
+   "date": "2026-11-27",
+   "talks": [
+    {
+     "title": "使わなくても「飾りたい」マッチ箱。国内シェア7割の日東社が「あぶない刑事」40周年の限定マッチを、昭和の広告マッチ風デザインで全国34の映画館と通販で発売（11/27発売、1箱550円）",
+     "body": [
+      "なぜ今：火をつける道具としての出番が減った分、マッチ箱は手のひらサイズの「紙のグッズ」として見直されていて、昭和レトロ人気と作品の周年企画が重なり、映画館で記念に買う物になっている。",
+      "企画課への示唆：箱・帯・紙袋など小さな紙ものに「昔の広告風」のデザインを載せるだけで記念品になるので、周年を迎える取引先や地元の店に、ノベルティや限定パッケージとして提案できる。"
+     ],
+     "tags": [
+      "エンタメ",
+      "ノスタルジア",
+      "パッケージ"
+     ],
+     "links": [
+      {
+       "url": "https://prtimes.jp/main/html/rd/p/000000009.000128237.html",
+       "title": "日東社 限定マッチ発売のお知らせ",
+       "site": "PR TIMES",
+       "desc": "",
+       "thumb": "",
+       "icon": "https://prcdn.freetls.fastly.net/release_image/128237/9/128237-9-f1f015bde8d5760f16489e7aea4ac805-3900x2042.jpg?format=jpeg&auto=webp&fit=bounds&width=2400&height=1260"
+      }
+     ],
+     "member": "AI",
+     "images": [],
+     "card": {
+      "head": "刑事ドラマ40周年のマッチ箱",
+      "points": [
+       "昭和の広告マッチ風の白黒箱",
+       "全国34の映画館と通販で販売",
+       "11月27日発売、1箱550円"
+      ]
+     }
+    }
+   ],
+   "vol": 19,
+   "buzz": [
+    {
+     "word": "フィジカルAI",
+     "growth": 6.31,
+     "links": [
+      {
+       "url": "https://www.jpower.co.jp/news/2026/11/news261119.html",
+       "site": "J-POWER"
+      },
+      {
+       "url": "https://www.macnica.co.jp/public-relations/news/2026/150808/",
+       "site": "マクニカ"
+      }
+     ]
+    },
+    {
+     "word": "ドパガキ",
+     "growth": 4.59,
+     "links": [
+      {
+       "url": "https://prtimes.jp/main/html/rd/p/000000996.000006410.html",
+       "site": "PR TIMES"
+      },
+      {
+       "url": "https://www.nikkei.com/article/DGXZQOCD2508N0V21C26A1000000/",
+       "site": "日本経済新聞"
+      }
+     ]
+    },
+    {
+     "word": "推し活",
+     "growth": 3.14,
+     "links": [
+      {
+       "url": "https://toyokeizai.net/articles/-/965340",
+       "site": "東洋経済オンライン"
+      }
+     ]
+    }
+   ]
   }
  ]
 };
